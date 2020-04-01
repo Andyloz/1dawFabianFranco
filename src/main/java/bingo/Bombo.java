@@ -5,10 +5,45 @@
  */
 package bingo;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author andyloz
  */
 public class Bombo {
     
+    private ArrayList<Integer> nums;
+
+    public Bombo() {
+        nums = new ArrayList<>(90);
+    }
+    
+    public void llenar() {
+        // Rellenamos la lista
+        for (int i = 1; i <= 90; i++) {
+            nums.add(i);
+        }
+        // Y la mezclamos
+        Collections.shuffle(nums);
+    }
+    
+    public int siguienteBola() {
+        try {
+            // Devuelve el primer número de la lista
+            return nums.remove(0);
+        } catch (IndexOutOfBoundsException e) {
+            // Si la lista queda vacía, devuelve 0
+            return 0;
+        }
+    }
+    
+    public int numBolas() {
+        return nums.size();
+    }
+
+    public ArrayList<Integer> getNums() {
+        return nums;
+    }
 }

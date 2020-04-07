@@ -34,22 +34,19 @@ public class Carton {
             }
         }
         
-        generarRellenables();
+        generarCombinacion();
     }
     
-    private void generarRellenables() {
+    private boolean[][] generarCombinacion() {
         Random random = new Random();
+        boolean[][] combinaciones = new boolean[gridCasillas.length][];
         
-        for (int i = 0; i < gridCasillas.length; i++) {
-            // Primero seleccionamos una combinación aleatoriamene
-            boolean[] combinacion = combCols[random.nextInt(combCols.length)];
-            
-            // Y luego asignamos a las casillas como rellenables según
-            // la combinación generada
-            for (int j = 0; j < gridCasillas[i].length; j++) {
-                gridCasillas[i][j].setRellenable(combinacion[j]);
-            }
+        // Generaremos combinaciones para cada columna escogiéndolas aleatoriamente
+        // de la lista de combinaciones posible
+        for (int i = 0; i < combinaciones.length; i++) {
+            combinaciones[i] = combCols[random.nextInt(combCols.length)];
         }
+        return combinaciones;
     }
 
     public Casilla[][] getCasillas() {

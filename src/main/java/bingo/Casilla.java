@@ -20,6 +20,11 @@ public class Casilla {
         Random random = new Random();
         return random.nextInt(9)+1 + (decimas*10);
     }
+    
+    public static int generarNumero(int inicio, int fin) {
+        Random random = new Random();
+        return random.nextInt(fin+1) + inicio;
+    }
 
     public int getNum() {
         return num;

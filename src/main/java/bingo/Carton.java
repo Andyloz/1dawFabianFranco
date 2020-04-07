@@ -39,14 +39,14 @@ public class Carton {
     
     private boolean[][] generarCombinacion() {
         Random random = new Random();
-        boolean[][] combinaciones = new boolean[gridCasillas.length][];
+        boolean[][] gridCombinaciones = new boolean[gridCasillas.length][];
         
         // Generaremos combinaciones para cada columna escogiéndolas aleatoriamente
-        // de la lista de combinaciones posible
-        for (int i = 0; i < combinaciones.length; i++) {
-            combinaciones[i] = combCols[random.nextInt(combCols.length)];
+        // de la lista de combinaciones posibles
+        for (int i = 0; i < gridCombinaciones.length; i++) {
+            gridCombinaciones[i] = combCols[random.nextInt(combCols.length)];
         }
-        return combinaciones;
+        return gridCombinaciones;
     }
 
     public Casilla[][] getCasillas() {

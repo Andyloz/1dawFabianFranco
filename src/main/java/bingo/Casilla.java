@@ -5,6 +5,8 @@
  */
 package bingo;
 
+import java.util.Random;
+
 /**
  *
  * @author andyloz
@@ -13,8 +15,10 @@ public class Casilla {
     
     private int num;
     private boolean tachado;
-
-    public Casilla() {
+    
+    public static int generarNumero(int decimas) {
+        Random random = new Random();
+        return random.nextInt(9)+1 + (decimas*10);
     }
 
     public int getNum() {

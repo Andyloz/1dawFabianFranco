@@ -34,7 +34,7 @@ public class Carton {
             }
         }
         
-        generarCombinacion();
+        boolean[][] gridCombinaciones = generarCombinacion();
     }
     
     private boolean[][] generarCombinacion() {

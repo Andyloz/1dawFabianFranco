@@ -28,14 +28,6 @@ public class Carton {
     public Carton() {
         Random random = new Random();
         
-        // Inicialización de las casillas
-        gridCasillas = new Casilla[9][3];
-        for (int i = 0; i < gridCasillas.length; i++) {
-            for (int j = 0; j < gridCasillas[i].length; j++) {
-                gridCasillas[i][j] = new Casilla();
-            }
-        }
-        
         boolean[][] gridCombinaciones = generarCombinacion();
         ArrayList<Integer>[] gridNums = generarNumeros(gridCombinaciones);
     }
@@ -98,7 +90,7 @@ public class Carton {
         
         return gridNums;
     }
-
+    
     public Casilla[][] getCasillas() {
         return gridCasillas;
     }

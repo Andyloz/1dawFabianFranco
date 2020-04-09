@@ -15,6 +15,11 @@ public class Casilla {
     
     private int num;
     private boolean tachado;
+
+    public Casilla(int num) {
+        this.num = num;
+        this.tachado = false;
+    }
     
     public static int generarNumero(int decimas) {
         Random random = new Random();

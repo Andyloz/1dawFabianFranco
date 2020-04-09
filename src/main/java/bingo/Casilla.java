@@ -43,7 +43,11 @@ public class Casilla {
         return tachado;
     }
 
-    public void setTachado(boolean tachado) {
-        this.tachado = tachado;
+    public boolean comprobarNumero(int num) {
+        if (this.num == num) {
+            this.tachado = true;
+            return true;
+        }
+        return false;
     }
 }

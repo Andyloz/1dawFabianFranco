@@ -26,15 +26,18 @@ public class Carton {
         };
 
     public Carton() {
-        Random random = new Random();
+        this.gridCasillas = new Casilla[9][3];
+        boolean[][] gridCombinaciones;
+        ArrayList<Integer>[] gridNums;
         
-        boolean[][] gridCombinaciones = generarCombinacion();
-        ArrayList<Integer>[] gridNums = generarNumeros(gridCombinaciones);
+        gridCombinaciones = this.generarCombinacion();
+        gridNums =          this.generarNumeros(gridCombinaciones);
+                            this.colocarNumeros(gridCombinaciones, gridNums);
     }
     
     private boolean[][] generarCombinacion() {
         Random random = new Random();
-        boolean[][] gridCombinaciones = new boolean[gridCasillas.length][];
+        boolean[][] gridCombinaciones = new boolean[this.gridCasillas.length][];
         
         // Generaremos combinaciones para cada columna escogiéndolas aleatoriamente
         // de la lista de combinaciones posibles
@@ -47,10 +50,10 @@ public class Carton {
     private ArrayList<Integer>[] generarNumeros(boolean[][] gridCombinaciones) {
         Random random = new Random();
         // Almacenaremos los números generados en una variable auxiliar
-        ArrayList<Integer>[] gridNums = new ArrayList[gridCasillas.length];
+        ArrayList<Integer>[] gridNums = new ArrayList[this.gridCasillas.length];
         
         // Recorremos las columnas ->
-        for (int i = 0; i < gridNums.length-1; i++) {
+        for (int i = 0; i < gridNums.length; i++) {
             // Instanciamos la lista para la columna i
             gridNums[i] = new ArrayList<>();
             
@@ -91,6 +94,17 @@ public class Carton {
         return gridNums;
     }
     
+    private void colocarNumeros(
+            boolean[][] gridCombinaciones, ArrayList<Integer>[] gridNums) {
+        for (int i = 0; i < this.gridCasillas.length; i++) {
+            for (int j = 0; j < this.gridCasillas[i].length; j++) {
+                if (gridCombinaciones[i][j]) {
+                    this.gridCasillas[i][j] = new Casilla(gridNums[i].remove(0));
+                }
+            }
+        }
+    }
+
     public Casilla[][] getCasillas() {
         return gridCasillas;
     }

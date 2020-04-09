@@ -28,7 +28,7 @@ public class Casilla {
     
     public static int generarNumero(int inicio, int fin) {
         Random random = new Random();
-        return random.nextInt(fin+1) + inicio;
+        return random.nextInt(fin-inicio+1) + inicio;
     }
 
     public int getNum() {

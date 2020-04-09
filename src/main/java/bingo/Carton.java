@@ -105,6 +105,28 @@ public class Carton {
         }
     }
 
+    @Override
+    public String toString() {
+        String str = "╔════╦════╦════╦════╦════╦════╦════╦════╦════╗";
+        for (int j = 0; j < this.gridCasillas[0].length; j++) {
+            str += "\n║";
+            for (int i = 0; i < this.gridCasillas.length; i++) {
+                str += this.gridCasillas[i][j] == null
+                        ? "    ║"
+                        :  String.format(" %2s ║", this.gridCasillas[i][j].getNum());
+            }
+            switch (j) {
+                case 0: case 1:
+                    str += "\n╠════╬════╬════╬════╬════╬════╬════╬════╬════╣";
+                    break;
+                case 2:
+                    str += "\n╚════╩════╩════╩════╩════╩════╩════╩════╩════╝";
+                    break;
+            }
+        }
+        return str;
+    }
+
     public Casilla[][] getCasillas() {
         return gridCasillas;
     }

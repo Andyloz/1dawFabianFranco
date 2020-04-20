@@ -49,6 +49,45 @@ public class Carton {
             this.numCasPorCol = new int[9];
         }
         
+        // Comprueba que no se vayan a asignar más casillas de las que se pueden
+        // asignar en una fila (5)
+        private void comprobarFilsDisp(int fil) {
+            int contCasillas = 0;
+            // Recorremos las casillas para esa fila
+            for (int cols = 0; cols < 9; cols++) {
+                // Si la casilla ha sido asginada
+                if (gridCombs[fil][cols]) {
+                    // .. la cuenta
+                    contCasillas++;
+                }
+            }
+            if (contCasillas > 4) {
+                // Si la fila llega a tener 5 casillas asignadas, la retira de las 
+                // filas disponibles para rellenar
+                this.filsDisp.remove((Integer) fil);
+            }
+        }
+
+        // Comprueba que no se vayan a asginar más casillas de las que se pueden
+        // asginar en una columna (2)
+        private void comprobarColsDisp(int col) {
+            int contCasillas = 0;
+            // Recorremos las casillas para esa columna
+            for (int fils = 0; fils < 3; fils++) {
+                // Si la casilla ha sido asignada
+                if (gridCombs[fils][col]) {
+                    // .. la cuenta
+                    contCasillas++;
+                }
+            }
+            if (contCasillas > 1) {
+                // Si la columna llega a tener 2 casillas asignadas, la retira de las 
+                // filas disponibles para rellenar
+                this.colsDisp.remove((Integer) col);
+            }
+            // Aprovechamos el método para contar las casillas que hay en esa columna
+            this.numCasPorCol[col] = contCasillas;
+        }
     }
 
     @Override

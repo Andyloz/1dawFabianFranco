@@ -49,6 +49,35 @@ public class Carton {
             this.numCasPorCol = new int[9];
         }
         
+        private boolean casillaAsignable(int fil, int col) {
+            // Comprobar anteriores...
+            boolean anterior = false;
+            // ...si hay espacio atrás
+            if (col > 0) {
+                // Comprobar anterior
+                anterior = this.gridCombs[fil][col - 1];
+            }
+            // Si las dos anteriores están asignadas devolver false...
+            if (col > 1 && anterior && this.gridCombs[fil][col - 2]) {
+                return false;
+            }
+
+            // Comprobar posteriores
+            boolean posterior = false;
+            // ...si hay espacio después
+            if (col < 8) {
+                // Comprobar posterior
+                posterior = this.gridCombs[fil][col + 1];
+            }
+            // Si las dos posteriores están asignadas, devolver false
+            if (col < 7 && posterior && this.gridCombs[fil][col + 2]) {
+                return false;
+            }
+
+            // ...si no, devolver true
+            return true;
+        }
+        
         // Comprueba que no se vayan a asignar más casillas de las que se pueden
         // asignar en una fila (5)
         private void comprobarFilsDisp(int fil) {

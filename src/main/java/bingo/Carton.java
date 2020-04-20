@@ -48,6 +48,12 @@ public class Carton {
             // Esta variable almacenará el número de casillas asignadas por columna.
             this.numCasPorCol = new int[9];
         }
+
+        // Marca un true en la posición de la casilla en el grid de Combinación del
+        // cartón para su posterior rellenado
+        private void asignarCasilla(int fil, int col) {
+            this.gridCombs[fil][col] = true;
+        }
         
         private boolean casillaAsignable(int fil, int col) {
             // Comprobar anteriores...

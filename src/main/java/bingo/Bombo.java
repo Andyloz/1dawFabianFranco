@@ -18,9 +18,10 @@ public class Bombo {
 
     public Bombo() {
         nums = new ArrayList<>(90);
+        this.llenar();
     }
     
-    public void llenar() {
+    private void llenar() {
         // Rellenamos la lista
         for (int i = 1; i <= 90; i++) {
             nums.add(i);

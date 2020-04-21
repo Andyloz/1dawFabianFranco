@@ -30,13 +30,7 @@ public class Bombo {
     }
     
     public int siguienteBola() {
-        try {
-            // Devuelve el primer número de la lista
-            return nums.remove(0);
-        } catch (IndexOutOfBoundsException e) {
-            // Si la lista queda vacía, devuelve 0
-            return 0;
-        }
+        return nums.remove(0);
     }
     
     public int numBolas() {

@@ -46,4 +46,17 @@ public class Bombo {
     public ArrayList<Integer> getNums() {
         return nums;
     }
+    
+    public static String imprimirBola(int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("num menor que 0");
+        }
+        if (num > 99) {
+            throw new IllegalArgumentException("num de más de 2 dígitos");
+        }
+        String str = String.format("%02d", num);
+        return "╓──╖\r"
+             + "║"+str+"║\r"
+             + "╙──╜";
+    }
 }

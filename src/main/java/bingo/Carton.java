@@ -333,7 +333,7 @@ public class Carton {
         return str;
     }
 
-    public Casilla[][] getCasillas() {
+    public Casilla[][] getGridCasillas() {
         return gridCasillas;
     }
 }

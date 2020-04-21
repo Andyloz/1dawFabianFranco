@@ -15,7 +15,13 @@ import java.util.Random;
  * @author andyloz
  */
 public class Carton {
+    
     private Casilla[][] gridCasillas;
+
+    public Carton() {
+        ConstructorCarton cc = new ConstructorCarton();
+        this.gridCasillas = cc.gridCasillas;
+    }
     
     private final static class ConstructorCarton {
 
@@ -335,5 +341,9 @@ public class Carton {
 
     public Casilla[][] getGridCasillas() {
         return gridCasillas;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(new Carton());
     }
 }

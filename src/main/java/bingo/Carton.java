@@ -318,7 +318,7 @@ public class Carton {
                     continue;
                 }
                 if (this.gridCasillas[fils][cols].isTachado()) {
-                    str += String.format("=%2s=║", this.gridCasillas[fils][cols].getNum());
+                    str += String.format(" %2s ║", this.gridCasillas[fils][cols].getNum()).replace(' ', '=');
                 } else {
                     str += String.format(" %2s ║", this.gridCasillas[fils][cols].getNum());
                 }

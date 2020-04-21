@@ -276,6 +276,10 @@ public class Carton {
         return true;
     }
 
+    public boolean comprobarBingo() {
+        return comprobarLinea(0) && comprobarLinea(1) && comprobarLinea(2);
+    }
+
     public boolean tacharCasilla(int num) {
         int col = Carton.colNum(num);
         // Recorre las casillas de esa columna

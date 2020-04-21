@@ -261,6 +261,21 @@ public class Carton {
         }
     }
 
+    public boolean comprobarLinea(int fil) {
+        for (int cols = 0; cols < 9; cols++) {
+            // Si es null...
+            if (this.gridCasillas[fil][cols] == null) {
+                return false;
+            }
+            // Si no está tachada...
+            if (!this.gridCasillas[fil][cols].isTachado()) {
+                return false;
+            }
+        }
+        // Si todas están tachadas...
+        return true;
+    }
+
     public boolean tacharCasilla(int num) {
         int col = Carton.colNum(num);
         // Recorre las casillas de esa columna

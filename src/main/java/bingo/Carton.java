@@ -262,9 +262,7 @@ public class Carton {
     }
 
     public boolean tacharCasilla(int num) {
-        int col = num < 80
-                ? Integer.parseInt(String.format("%02d", num).substring(0, 1))
-                : 8;
+        int col = Carton.colNum(num);
         // Recorre las casillas de esa columna
         for (int fils = 0; fils < 3; fils++) {
             if (this.gridCasillas[fils][col] != null
@@ -276,22 +274,39 @@ public class Carton {
         // Si no lo encuentra, devuelve false
         return false;
     }
+    
+    // Selecciona la columna a la que pertenece el número tomando sus décimas
+    private static int colNum(int num) {
+        return num < 80
+                ? Integer.parseInt(String.format("%02d", num).substring(0, 1))
+                : 8;
+    }
 
     @Override
     public String toString() {
+        // Primera línea
         String str = "╔════╦════╦════╦════╦════╦════╦════╦════╦════╗";
-        for (int j = 0; j < this.gridCasillas[0].length; j++) {
+        for (int fils = 0; fils < this.gridCasillas.length; fils++) {
             str += "\n║";
-            for (int i = 0; i < this.gridCasillas.length; i++) {
-                str += this.gridCasillas[i][j] == null
-                        ? "    ║"
-                        :  String.format(" %2s ║", this.gridCasillas[i][j].getNum());
+            for (int cols = 0; cols < this.gridCasillas[fils].length; cols++) {
+                if (this.gridCasillas[fils][cols] == null) {
+                    str += "    ║";
+                    continue;
+                }
+                if (this.gridCasillas[fils][cols].isTachado()) {
+                    str += String.format("=%2s=║", this.gridCasillas[fils][cols].getNum());
+                } else {
+                    str += String.format(" %2s ║", this.gridCasillas[fils][cols].getNum());
+                }
             }
-            switch (j) {
-                case 0: case 1:
+            switch (fils) {
+                case 0:
+                case 1:
+                    // Líneas intermedias
                     str += "\n╠════╬════╬════╬════╬════╬════╬════╬════╬════╣";
                     break;
                 case 2:
+                    // Última línea
                     str += "\n╚════╩════╩════╩════╩════╩════╩════╩════╩════╝";
                     break;
             }

@@ -261,6 +261,22 @@ public class Carton {
         }
     }
 
+    public boolean tacharCasilla(int num) {
+        int col = num < 80
+                ? Integer.parseInt(String.format("%02d", num).substring(0, 1))
+                : 8;
+        // Recorre las casillas de esa columna
+        for (int fils = 0; fils < 3; fils++) {
+            if (this.gridCasillas[fils][col] != null
+                    && this.gridCasillas[fils][col].comprobarNumero(num)) {
+                // Hasta encontrar el número
+                return true;
+            }
+        }
+        // Si no lo encuentra, devuelve false
+        return false;
+    }
+
     @Override
     public String toString() {
         String str = "╔════╦════╦════╦════╦════╦════╦════╦════╦════╗";

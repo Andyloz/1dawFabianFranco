@@ -271,7 +271,7 @@ public class Carton {
         for (int cols = 0; cols < 9; cols++) {
             // Si es null...
             if (this.gridCasillas[fil][cols] == null) {
-                return false;
+                continue;
             }
             // Si no está tachada...
             if (!this.gridCasillas[fil][cols].isTachado()) {

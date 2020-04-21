@@ -24,6 +24,7 @@ public class Carton {
         private ArrayList<Integer> filsDisp;
         private ArrayList<Integer> colsDisp;
         
+        private boolean primerasCasillas;
         private int[] numCasPorCol;
 
         public ConstructorCarton() {
@@ -72,6 +73,8 @@ public class Carton {
                     this.comprobarFilsDisp(fil);
                 }
             }
+            // Se marca en el programa que se ha terminado de generar las primeras casillas
+            this.primerasCasillas = true;
         }
 
         // Marca un true en la posición de la casilla en el grid de Combinación del
@@ -93,16 +96,22 @@ public class Carton {
                 return false;
             }
 
-            // Comprobar posteriores
-            boolean posterior = false;
-            // ...si hay espacio después
-            if (col < 8) {
-                // Comprobar posterior
-                posterior = this.gridCombs[fil][col + 1];
-            }
-            // Si las dos posteriores están asignadas, devolver false
-            if (col < 7 && posterior && this.gridCombs[fil][col + 2]) {
-                return false;
+            // Si se han terminado las primeras casillas, se comprueban las
+            // casillas posteriores...
+            if (primerasCasillas) {
+                boolean posterior = false;
+                // ...si hay espacio después
+                if (col < 8) {
+                    // Comprobar posterior
+                    posterior = this.gridCombs[fil][col + 1];
+                }
+                // Si las dos posteriores están asignadas, devolver false
+                if (col < 7 && posterior && this.gridCombs[fil][col + 2]) {
+                    return false;
+                }
+                // Si al final las dos casillas contiguas están asignadas, devolver
+                // false. Si no, devolver true.
+                return anterior && posterior ? false : true;
             }
 
             // ...si no, devolver true

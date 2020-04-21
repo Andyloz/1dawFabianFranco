@@ -74,6 +74,9 @@ public class JuegoBingo {
                 System.out.println(reverseNums.subList(0, 4));
             }
             
+            System.out.println("Números tachados: "+c.numTachados());
+            System.out.println("Números activos: "+c.numActivos());
+            
             System.out.println("\n--Pulse [Enter] para continuar--");
             enterParaContinuar();
         }

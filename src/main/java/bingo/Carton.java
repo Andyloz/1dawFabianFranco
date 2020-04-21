@@ -77,6 +77,24 @@ public class Carton {
             this.primerasCasillas = true;
         }
 
+        private void casillasAleatorias() {
+            Random rnd = new Random();
+            // Mientras queden posibilidades en las dos listas
+            while (!this.filsDisp.isEmpty() && !this.colsDisp.isEmpty()) {
+                // Generar coordenadas
+                int fil = filsDisp.get(rnd.nextInt(filsDisp.size()));
+                int col = colsDisp.get(rnd.nextInt(colsDisp.size()));
+
+                // Si la casilla no ha sido asignada y es asignable
+                if (!this.gridCombs[fil][col] && casillaAsignable(fil, col)) {
+                    this.asignarCasilla(fil, col);
+
+                    this.comprobarFilsDisp(fil);
+                    this.comprobarColsDisp(col);
+                }
+            }
+        }
+
         // Marca un true en la posición de la casilla en el grid de Combinación del
         // cartón para su posterior rellenado
         private void asignarCasilla(int fil, int col) {

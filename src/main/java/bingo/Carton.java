@@ -307,8 +307,7 @@ public class Carton {
                 : 8;
     }
 
-    @Override
-    public String toString() {
+    public String imprimirCarton() {
         // Primera línea
         String str = "╔════╦════╦════╦════╦════╦════╦════╦════╦════╗";
         for (int fils = 0; fils < this.gridCasillas.length; fils++) {
@@ -341,9 +340,5 @@ public class Carton {
 
     public Casilla[][] getGridCasillas() {
         return gridCasillas;
-    }
-    
-    public static void main(String[] args) {
-        System.out.println(new Carton());
     }
 }

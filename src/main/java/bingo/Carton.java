@@ -5,6 +5,7 @@
  */
 package bingo;
 
+import excepciones.DemasiadosIntentosExcepcion;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -17,37 +18,61 @@ public class Carton {
     private Casilla[][] gridCasillas;
     
     private final static class ConstructorCarton {
-        
+
         private Casilla[][] gridCasillas;
 
         private boolean[][] gridCombs;
         private ArrayList<Integer> filsDisp;
         private ArrayList<Integer> colsDisp;
-        
+
         private boolean primerasCasillas;
+
+        private int ciclosDeMas;
+        private boolean combTerminado;
+
         private int[] numCasPorCol;
 
-        public ConstructorCarton() {
+        private ConstructorCarton() {
             this.gridCasillas = new Casilla[3][9];
 
-            // Esta variable marca las casillas a las que se les va a asignar un
-            // número
-            this.gridCombs = new boolean[3][9];
+            do {
+                // Esta variable marca las casillas a las que se les va a asignar un
+                // número
+                this.gridCombs = new boolean[3][9];
 
-            // Variable de filas disponibles (véase this.comprobarFilsDisp(int))
-            this.filsDisp = new ArrayList<>(3);
-            this.filsDisp.add(0);
-            this.filsDisp.add(1);
-            this.filsDisp.add(2);
+                // Variable de filas disponibles (véase this.comprobarFilsDisp(int))
+                this.filsDisp = new ArrayList<>(3);
+                this.filsDisp.add(0);
+                this.filsDisp.add(1);
+                this.filsDisp.add(2);
 
-            // Variable de columnas disponibles (véase this.comprobarColsDisp(int))
-            this.colsDisp = new ArrayList<>(9);
-            this.colsDisp.add(0); this.colsDisp.add(1); this.colsDisp.add(2);
-            this.colsDisp.add(3); this.colsDisp.add(4); this.colsDisp.add(5);
-            this.colsDisp.add(6); this.colsDisp.add(7); this.colsDisp.add(8);
-            
-            // Esta variable almacenará el número de casillas asignadas por columna.
-            this.numCasPorCol = new int[9];
+                // Variable de columnas disponibles (véase this.comprobarColsDisp(int))
+                this.colsDisp = new ArrayList<>(9);
+                this.colsDisp.add(0); this.colsDisp.add(1); this.colsDisp.add(2);
+                this.colsDisp.add(3); this.colsDisp.add(4); this.colsDisp.add(5);
+                this.colsDisp.add(6); this.colsDisp.add(7); this.colsDisp.add(8);
+
+                // Estas ayudan a comprobar que se ha caído en una combinación imposible
+                this.ciclosDeMas = 0;
+                this.combTerminado = true;
+
+                // Primero se asigna una casilla para cada columna en una casilla aleatoria
+                this.primerasCasillas();
+                
+                // Esta variable almacenará el número de casillas asignadas por columna.
+                // Tras pasar las primeras casillas, todas las columnas tienen una 
+                // sola casilla asignada
+                this.numCasPorCol = new int[]{1,1,1,1,1,1,1,1,1};
+
+                // Luego se asignan casillas al azar
+                try {
+                    this.casillasAleatorias();
+                } catch (DemasiadosIntentosExcepcion ex) {
+                    // Si se ha caído en una combinación imposible, se empieza de nuevo
+                    this.combTerminado = false;
+                    // Esto suele ocurrir el ~12% de los casos
+                }
+            } while (!this.combTerminado);
         }
 
         private void primerasCasillas() {
@@ -77,7 +102,7 @@ public class Carton {
             this.primerasCasillas = true;
         }
 
-        private void casillasAleatorias() {
+        private void casillasAleatorias() throws DemasiadosIntentosExcepcion {
             Random rnd = new Random();
             // Mientras queden posibilidades en las dos listas
             while (!this.filsDisp.isEmpty() && !this.colsDisp.isEmpty()) {
@@ -91,6 +116,11 @@ public class Carton {
 
                     this.comprobarFilsDisp(fil);
                     this.comprobarColsDisp(col);
+                } else {
+                    this.ciclosDeMas++;
+                    if (this.ciclosDeMas > 75) {
+                        throw new DemasiadosIntentosExcepcion("En casillas aleatorias");
+                    }
                 }
             }
         }

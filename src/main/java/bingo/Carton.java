@@ -49,6 +49,31 @@ public class Carton {
             this.numCasPorCol = new int[9];
         }
 
+        private void primerasCasillas() {
+            Random rnd = new Random();
+            // Recorremos las columnas...
+            for (int cols = 0; cols < 9; cols++) {
+                // Fila candidata generada
+                int fil = this.filsDisp.get(rnd.nextInt(this.filsDisp.size()));
+
+                // A partir de la 3ra iteración comprobará que la casilla sea asignable
+                if (cols > 1) {
+                    if (!this.casillaAsignable(fil, cols)) {
+                        // Si no es asignable se generará una fila diferente
+                        cols--;
+                        continue;
+                    }
+                }
+                this.asignarCasilla(fil, cols);
+
+                // A partir de la 5ta iteración, es necesario comprobar qué filas
+                // están llenas
+                if (cols > 3) {
+                    this.comprobarFilsDisp(fil);
+                }
+            }
+        }
+
         // Marca un true en la posición de la casilla en el grid de Combinación del
         // cartón para su posterior rellenado
         private void asignarCasilla(int fil, int col) {

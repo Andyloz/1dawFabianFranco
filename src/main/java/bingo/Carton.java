@@ -323,6 +323,22 @@ public class Carton {
         return num;
     }
     
+    public int numActivos() {
+        int num = 0;
+        // Recorremos todo el grid
+        for (int fils = 0; fils < this.gridCasillas.length; fils++) {
+            for (int cols = 0; cols < this.gridCasillas[fils].length; cols++) {
+                // Si la casilla no es null y no está tachada...
+                if (this.gridCasillas[fils][cols] != null &&
+                        !this.gridCasillas[fils][cols].isTachado()) {
+                    // La contamos
+                    num++;
+                }
+            }
+        }
+        return num;
+    }
+    
 
     public String imprimirCarton() {
         // Primera línea

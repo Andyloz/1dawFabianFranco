@@ -31,6 +31,7 @@ public class Carton {
         private boolean combTerminado;
 
         private int[] numCasPorCol;
+        private ArrayList<Integer>[] nums = new ArrayList[9];
 
         private ConstructorCarton() {
             this.gridCasillas = new Casilla[3][9];
@@ -73,6 +74,10 @@ public class Carton {
                     // Esto suele ocurrir el ~12% de los casos
                 }
             } while (!this.combTerminado);
+
+            // Variable para guardar los números generados
+            this.nums = new ArrayList[9];
+            this.generarNumeros();
         }
 
         private void primerasCasillas() {
@@ -204,6 +209,37 @@ public class Carton {
             }
             // Aprovechamos el método para contar las casillas que hay en esa columna
             this.numCasPorCol[col] = contCasillas;
+        }
+
+        // Se generan los números por columnas
+        private void generarNumeros() {
+            // Recorremos las columnas
+            for (int cols = 0; cols < 9; cols++) {
+                nums[cols] = new ArrayList<>(2);
+                // Generaremos tantos números como hayamos indicado en numCasPorCol
+                for (int fils = 0; fils < this.numCasPorCol[cols]; fils++) {
+                    // Generamos...
+                    switch (cols) {
+                        case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7:
+                            this.nums[cols].add(Casilla.generarNumero(cols));
+                            break;
+                        case 8:
+                            this.nums[cols].add(Casilla.generarNumero(80, 90));
+                            break;
+                    }
+                }
+                // Ya generados los números de la columna comprobaremos que no
+                // se repitan si hay más de uno
+                if (nums[cols].size() == 2 && nums[cols].get(0).equals(1)) {
+                    // Si los números coinciden, vaciaremos la lista y retrocedemos
+                    // una iteración para generarla de nuevo
+                    nums[cols].clear();
+                    cols--;
+                } else {
+                    // Si no hay problemas, ordenaremos los números
+                    Collections.sort(nums[cols]);
+                }
+            }
         }
     }
 

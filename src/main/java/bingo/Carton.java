@@ -78,6 +78,9 @@ public class Carton {
             // Variable para guardar los números generados
             this.nums = new ArrayList[9];
             this.generarNumeros();
+            
+            // Colocación de los números generados en gridCasillas
+            this.colocarNumeros();
         }
 
         private void primerasCasillas() {
@@ -238,6 +241,21 @@ public class Carton {
                 } else {
                     // Si no hay problemas, ordenaremos los números
                     Collections.sort(nums[cols]);
+                }
+            }
+        }
+
+        // Se colocan los números generados en gridCasillas
+        private void colocarNumeros() {
+            // Recorremos las columnas...
+            for (int cols = 0; cols < 9; cols++) {
+                // y comprobamos si la casilla de esa columna...
+                for (int fils = 0; fils < 3; fils++) {
+                    // ...está asignada
+                    if (this.gridCombs[fils][cols]) {
+                        // Si está asignada, le colocamos el número almacenado en nums
+                        this.gridCasillas[fils][cols] = new Casilla(nums[cols].remove(0));
+                    }
                 }
             }
         }

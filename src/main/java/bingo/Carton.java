@@ -306,6 +306,23 @@ public class Carton {
                 ? Integer.parseInt(String.format("%02d", num).substring(0, 1))
                 : 8;
     }
+    
+    public int numTachados() {
+        int num = 0;
+        // Recorremos todo el grid
+        for (int fils = 0; fils < this.gridCasillas.length; fils++) {
+            for (int cols = 0; cols < this.gridCasillas[fils].length; cols++) {
+                // Si la casilla no es null y está tachada...
+                if (this.gridCasillas[fils][cols] != null &&
+                        this.gridCasillas[fils][cols].isTachado()) {
+                    // La contamos
+                    num++;
+                }
+            }
+        }
+        return num;
+    }
+    
 
     public String imprimirCarton() {
         // Primera línea

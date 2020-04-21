@@ -63,7 +63,7 @@ public class JuegoBingo {
             }
             
             System.out.println(c.imprimirCarton());
-            System.out.print("Útlimos 5 números cantados: ");
+            System.out.print("Últimos 5 números cantados: ");
             
             ArrayList<Integer> reverseNums = (ArrayList<Integer>) nums.clone();
             Collections.reverse(reverseNums);
@@ -74,8 +74,20 @@ public class JuegoBingo {
                 System.out.println(reverseNums.subList(0, 4));
             }
             
-            System.out.println("--Pulse [Enter] para la siguiente bola--\n");
+            System.out.println("\n--Pulse [Enter] para continuar--");
             enterParaContinuar();
         }
+        System.out.println(
+                "$$$$$$$\\  $$\\                                     $$\\ $$\\     \n" +
+                "$$  __$$\\ \\__|                                    $$ |$$ |      \n" +
+                "$$ |  $$ |$$\\ $$$$$$$\\   $$$$$$\\   $$$$$$\\        $$ |$$ |    \n" +
+                "$$$$$$$\\ |$$ |$$  __$$\\ $$  __$$\\ $$  __$$\\       $$ |$$ |    \n" +
+                "$$  __$$\\ $$ |$$ |  $$ |$$ /  $$ |$$ /  $$ |      \\__|\\__|     \n" +
+                "$$ |  $$ |$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |                      \n" +
+                "$$$$$$$  |$$ |$$ |  $$ |\\$$$$$$$ |\\$$$$$$  |      $$\\ $$\\     \n" +
+                "\\_______/ \\__|\\__|  \\__| \\____$$ | \\______/       \\__|\\__|\n" +
+                "                        $$\\   $$ |                               \n" +
+                "                        \\$$$$$$  |                               \n" +
+                "                         \\______/                                  ");
     }
 }

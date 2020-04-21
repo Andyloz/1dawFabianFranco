@@ -239,7 +239,7 @@ public class Carton {
                 }
                 // Ya generados los números de la columna comprobaremos que no
                 // se repitan si hay más de uno
-                if (nums[cols].size() == 2 && nums[cols].get(0).equals(1)) {
+                if (nums[cols].size() == 2 && nums[cols].get(0).equals(nums[cols].get(1))) {
                     // Si los números coinciden, vaciaremos la lista y retrocedemos
                     // una iteración para generarla de nuevo
                     nums[cols].clear();

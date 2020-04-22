@@ -47,11 +47,12 @@ public class JuegoBingo {
         ArrayList<Integer> nums = new ArrayList<>();
         // Repetir hasta que no se cante bingo
         while (!c.comprobarBingo()) {            
-            System.out.println("------------------------------------------\n");
+            System.out.println("----------------------------------------------\n");
             
             nums.add(b.siguienteBola()); // obtención de la bola
             
-            System.out.println("Ha salido el "+nums.get(nums.size()-1)+".");
+            System.out.println("Siguiente bola:");
+            System.out.println(Bombo.imprimirBola(nums.get(nums.size()-1)));
             
             if (c.tacharCasilla(nums.get(nums.size()-1))) {
                 System.out.println("Se ha tachado una casilla !!");
@@ -84,7 +85,7 @@ public class JuegoBingo {
             System.out.println("Números tachados: "+c.numTachados());
             System.out.println("Números activos: "+c.numActivos());
             
-            System.out.println("\n--Pulse [Enter] para continuar--");
+            System.out.println("\n--Pulse [Enter] para continuar--\n");
             enterParaContinuar();
         }
         

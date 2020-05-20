@@ -23,7 +23,7 @@ public class Carton {
         this.gridCasillas = cc.gridCasillas;
     }
     
-    private final static class ConstructorCarton {
+    private final class ConstructorCarton {
 
         private Casilla[][] gridCasillas;
 

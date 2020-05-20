@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package excepciones;
+package bingo;
 
 /**
  *
  * @author andyloz
  */
-public class DemasiadosIntentosExcepcion extends Exception {
-    public DemasiadosIntentosExcepcion(String message) {
-        super(message);
-    }
+public enum Patron {
+    
 }

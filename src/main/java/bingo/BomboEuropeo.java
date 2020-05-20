@@ -9,6 +9,6 @@ package bingo;
  *
  * @author andyloz
  */
-public abstract class Bombo {
+public final class BomboEuropeo extends Bombo {
     
 }

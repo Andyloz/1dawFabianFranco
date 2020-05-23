@@ -30,6 +30,7 @@ public final class CartonAmericano extends Carton {
         }
         
         generarNumeros(numeros);
+        colocarNumeros(numeros);
     }
     
     
@@ -48,5 +49,32 @@ public final class CartonAmericano extends Carton {
                 **/
             }
         }
+    }
+    
+    private void colocarNumeros(HashSet<Integer>[] numeros) {
+        int[][] matrizTranspuesta = new int[FILAS][];
+        
+        // Pasamos cada Set a array y lo asignamos a su correspondiente fila
+        for (int i = 0; i < FILAS; i++) {
+            matrizTranspuesta[i] = numeros[i].stream()
+                    .mapToInt(x -> x)
+                    .sorted()
+                    .toArray();
+        }
+        
+        // Casilla central vacía
+        matrizTranspuesta[2][2] = 0;
+        
+        // Como los números de las columnas están en filas, tenemos que 
+        // trasnponer el array bidimensional
+        int[][] matriz = new int[FILAS][COLUMNAS];
+        
+        for (int col = 0; col < COLUMNAS; col++) {
+            for (int fil = 0; fil < FILAS; fil++) {
+                matriz[fil][col] = matrizTranspuesta[col][fil];
+            }
+        }
+        
+        this.setMatriz(matriz);
     }
 }

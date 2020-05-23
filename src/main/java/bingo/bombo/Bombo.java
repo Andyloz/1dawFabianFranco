@@ -17,6 +17,7 @@ public abstract class Bombo {
 
     public Bombo() {
         listaBolas = new ArrayList<>();
+        llenarBombo();
     }
     
     public int sacarBola() {
@@ -36,5 +37,9 @@ public abstract class Bombo {
     
     public boolean vacio() {
         return listaBolas.isEmpty();
+    }
+
+    protected List<Integer> getListaBolas() {
+        return listaBolas;
     }
 }

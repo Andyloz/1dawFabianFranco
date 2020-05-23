@@ -5,10 +5,32 @@
  */
 package bingo.bombo;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /**
  *
  * @author andyloz
  */
 public final class BomboEuropeo extends Bombo {
-    
+    public static final int CANTIDAD_BOLAS = 90;
+
+    public BomboEuropeo() {
+        super();
+    }
+
+    @Override
+    public void llenarBombo() {
+        List<Integer> bolas = this.getListaBolas();
+        bolas.clear();
+        
+        bolas.addAll(
+                IntStream.rangeClosed(1, CANTIDAD_BOLAS)
+                        .boxed()
+                        .collect(Collectors.toList()) );
+        
+        Collections.shuffle(bolas);
+    }
 }

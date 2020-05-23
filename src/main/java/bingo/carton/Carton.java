@@ -71,4 +71,8 @@ public abstract class Carton {
         }
         return true;
     }
+
+    protected void setMatriz(int[][] matriz) {
+        this.matriz = matriz;
+    }
 }

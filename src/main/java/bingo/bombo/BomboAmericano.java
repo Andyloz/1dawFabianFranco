@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bingo;
+package bingo.bombo;
 
 /**
  *
  * @author andyloz
  */
-public final class CartonEuropeo extends Carton {
-    
+public final class BomboAmericano extends Bombo {
+
 }

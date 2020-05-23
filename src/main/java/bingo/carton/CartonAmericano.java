@@ -11,4 +11,10 @@ package bingo.carton;
  */
 public final class CartonAmericano extends Carton {
     
+    public static final int FILAS = 5;
+    public static final int COLUMNAS = 5;
+
+    public CartonAmericano() {
+        super(FILAS, COLUMNAS);
+    }
 }

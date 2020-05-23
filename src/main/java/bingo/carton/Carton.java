@@ -12,10 +12,12 @@ import java.awt.Point;
  * @author andyloz
  */
 public abstract class Carton {
+    // 0 -> No rellena   x > 0 -> Rellena   x < 0 -> Tachada 
     private int[][] matriz;
 
     public Carton(int filas, int columnas) {
         matriz = new int[filas][columnas];
+        generarCarton();
     }
     
     public abstract void generarCarton();

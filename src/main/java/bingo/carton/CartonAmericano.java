@@ -25,8 +25,9 @@ public final class CartonAmericano extends Carton {
     public void generarCarton() {
         HashSet<Integer>[] numeros = new HashSet[COLUMNAS];
         
-        for (int i = 0; i < COLUMNAS; i++) {
-            numeros[i] = new HashSet<>();
+        // Inicializamos los sets de numeros
+        for (int col = 0; col < COLUMNAS; col++) {
+            numeros[col] = new HashSet<>();
         }
         
         generarNumeros(numeros);
@@ -37,14 +38,15 @@ public final class CartonAmericano extends Carton {
     private void generarNumeros(HashSet<Integer>[] numeros) {
         Random random = new Random();
         
-        for (int i = 0; i < COLUMNAS; i++) {
-            int rangoOrigen = 15 * i;
-            int limiteRango = 16;
+        // Generamos los números por columnas
+        for (int col = 0; col < COLUMNAS; col++) {
+            int rangoOrigen = 15 * col; // Número mínimo a generar
+            int limiteRango = 16; // Cantidad de números a partir del mín.
             
-            while (numeros[i].size() != 5) {
-                numeros[i].add(random.nextInt(limiteRango) + rangoOrigen);
+            while (numeros[col].size() != 5) {
+                numeros[col].add(random.nextInt(limiteRango) + rangoOrigen);
                 /**
-                 * Si el número generado ya está presente en el Set, no será
+                 * Si el número generado ya está presente en el set, no será
                  * añadido
                 **/
             }
@@ -54,11 +56,11 @@ public final class CartonAmericano extends Carton {
     private void colocarNumeros(HashSet<Integer>[] numeros) {
         int[][] matrizTranspuesta = new int[FILAS][];
         
-        // Pasamos cada Set a array y lo asignamos a su correspondiente fila
+        // Pasamos cada set al array y lo asignamos a su correspondiente fila
         for (int i = 0; i < FILAS; i++) {
             matrizTranspuesta[i] = numeros[i].stream()
                     .mapToInt(x -> x)
-                    .sorted()
+                    .sorted() // ordenamos los números antes de pasarlos a array
                     .toArray();
         }
         
@@ -66,7 +68,7 @@ public final class CartonAmericano extends Carton {
         matrizTranspuesta[2][2] = 0;
         
         // Como los números de las columnas están en filas, tenemos que 
-        // trasnponer el array bidimensional
+        // transponer el array bidimensional
         int[][] matriz = new int[FILAS][COLUMNAS];
         
         for (int col = 0; col < COLUMNAS; col++) {

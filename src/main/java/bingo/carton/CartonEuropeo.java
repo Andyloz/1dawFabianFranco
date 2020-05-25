@@ -57,6 +57,8 @@ public final class CartonEuropeo extends Carton {
         while (matriz == null) {            
             matriz = this.colocarNumeros(numeros);
         }
+        
+        this.setMatriz(matriz);
     }
     
     private void primerosNumeros(List<Integer> bolas, List<Integer>[] numeros) {

@@ -6,6 +6,7 @@
 package bingo.carton;
 
 import java.awt.Point;
+import java.util.Arrays;
 
 /**
  *
@@ -74,5 +75,16 @@ public abstract class Carton {
 
     protected void setMatriz(int[][] matriz) {
         this.matriz = matriz;
+    }
+    
+    @Override
+    public String toString() {
+        String str = "";
+        
+        for (int i = 0; i < matriz.length; i++) {
+            str += Arrays.toString(matriz[i]);
+        }
+        
+        return str;
     }
 }

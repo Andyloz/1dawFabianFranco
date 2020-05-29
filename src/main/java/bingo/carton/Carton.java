@@ -77,6 +77,51 @@ public abstract class Carton {
         this.matriz = matriz;
     }
     
+    public String imprimirCarton() {
+        String head = "╔════";
+        String mid =  "╠════";
+        String tail = "╚════";
+        
+        for (int col = 0; col < matriz[0].length - 1; col++) {
+            head += "╦════";
+            mid +=  "╬════";
+            tail += "╩════";
+        }
+        
+        head += "╗";
+        mid +=  "╣";
+        tail += "╝";
+        
+        String vacio =   "║    ";
+        String tachado = "║====";
+        String relleno = "║ %02d ";
+        
+        String str = head + "\n";
+        
+        for (int fil = 0; fil < matriz.length; fil++) {
+            
+            for (int col = 0; col < matriz[0].length; col++) {
+                int num = matriz[fil][col];
+                
+                if (num == 0) {
+                    str += vacio;
+                } else if (num < 0) {
+                    str += tachado;
+                } else if (num > 0) {
+                    str += String.format(relleno, num);
+                }
+            }
+            
+            str += "║\n";
+            
+            if (fil != matriz.length - 1) {
+                str += mid + "\n";
+            }
+        }
+        
+        return str + tail;
+    }
+    
     @Override
     public String toString() {
         String str = "";

@@ -43,13 +43,13 @@ public final class CartonAmericano extends Carton {
             int rangoOrigen = 15 * col; // Número mínimo a generar
             int limiteRango = 16; // Cantidad de números a partir del mín.
             
-            while (numeros[col].size() != 5) {
+            do {
                 numeros[col].add(random.nextInt(limiteRango) + rangoOrigen);
                 /**
                  * Si el número generado ya está presente en el set, no será
                  * añadido
                 **/
-            }
+            } while (numeros[col].size() != 5);
         }
     }
     

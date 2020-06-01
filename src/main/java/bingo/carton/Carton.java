@@ -30,9 +30,9 @@ public abstract class Carton {
         
         for (int fil = 0; fil < filas; fil++) {
             for (int col = 0; col < columnas; col++) {
+                
                 // Si la casilla esta rellena coincide con el número dado
-                if (matriz[fil][col] == numero) {
-                    
+                if (matriz[fil][col] == numero) {    
                     matriz[fil][col] = tachado;
                     return new Point(fil, col);
                 }

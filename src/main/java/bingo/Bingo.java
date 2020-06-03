@@ -55,7 +55,7 @@ public abstract class Bingo {
 
     @Override
     public String toString() {
-        String fechaF = fecha.format(DateTimeFormatter.ofPattern("dd-MM-uuuu"));
-        return "id=" + id + ", fecha=" + fechaF + ", jugador=" + idJugador;
+        String fechaF = fecha.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        return id + "," + fechaF + "," + idJugador;
     }
 }

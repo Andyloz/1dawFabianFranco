@@ -14,8 +14,6 @@ import java.util.Random;
  * @author andyloz
  */
 public final class CartonAmericano extends Carton {
-    private static final long serialVersionUID = 171904300L;
-    
     public static final int FILAS = 5;
     public static final int COLUMNAS = 5;
     

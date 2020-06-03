@@ -14,8 +14,6 @@ import java.time.LocalDate;
  * @author andyloz
  */
 public final class BingoAmericano extends Bingo {
-    private static final long serialVersionUID = 386190036L;
-    
     private CartonAmericano carton;
     private BomboAmericano bombo;
     

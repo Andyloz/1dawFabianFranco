@@ -6,7 +6,6 @@
 package bingo;
 
 import java.awt.Point;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author andyloz
  */
-public enum Patron implements Serializable {
+public enum Patron {
     
     AHORCADO("El tradicional ahorcado",
             new Point(0,0), new Point(0,1), new Point(0,2), new Point(0,3),
@@ -43,11 +42,10 @@ public enum Patron implements Serializable {
     
     private final String descripcion;
     private final List<Point> coordenadas;
-    private static final long serialVersionUID = 331394611L;
 
     private Patron(String descripcion, Point... coordenadas) {
         this.descripcion = descripcion;
-        this.coordenadas = new ArrayList(List.of(coordenadas));
+        this.coordenadas = List.of(coordenadas);
     }
 
     public String getDescripcion() {

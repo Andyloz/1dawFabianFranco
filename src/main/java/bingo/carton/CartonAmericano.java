@@ -5,6 +5,7 @@
  */
 package bingo.carton;
 
+import bingo.Patron;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -16,9 +17,12 @@ public final class CartonAmericano extends Carton {
     
     public static final int FILAS = 5;
     public static final int COLUMNAS = 5;
+    
+    private final Patron premio;
 
     public CartonAmericano() {
         super(FILAS, COLUMNAS);
+        this.premio = generarPremio();
     }
 
     @Override
@@ -78,5 +82,12 @@ public final class CartonAmericano extends Carton {
         }
         
         this.setMatriz(matriz);
+    }
+
+    private Patron generarPremio() {
+        Random random = new Random();
+        Patron[] patrones = Patron.values();
+        
+        return patrones[random.nextInt(patrones.length)];
     }
 }

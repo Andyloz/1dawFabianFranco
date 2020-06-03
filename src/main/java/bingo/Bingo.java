@@ -5,59 +5,25 @@
  */
 package bingo;
 
-import bingo.dao.BingoMysqlDao;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.HashSet;
-import java.util.List;
 
 /**
  *
  * @author andyloz
  */
-public abstract class Bingo {
-    private static HashSet<Integer> ids = null;
-    private static int contador;
-    
-    private void fillIds() {
-        if (Bingo.ids == null) {
-            Bingo.ids = new HashSet<>();
-            
-            try {
-                BingoMysqlDao dao = new BingoMysqlDao();
-                List<Integer> ids = dao.getAllIds();
-                
-                if (ids != null) {
-                    Bingo.ids.addAll(ids);
-                }
-                    
-            } catch (SQLException e) {}
-        }
-    }
-    
-    
+public abstract class Bingo {    
     private String id;
     private LocalDate fecha;
     private String idJugador;
 
     public Bingo(String idJugador) {
-        fillIds();
-        
         this.idJugador = truncarNombre(idJugador);
         this.fecha = LocalDate.now();
-        
-        while (!ids.add(contador)) {            
-            contador++;
-        }
-        
-        this.id = String.valueOf(contador);
     }
     
     public Bingo(String id, LocalDate fecha, String idJugador) {
-        fillIds();
-        
         this.id = id;
         this.fecha = fecha;
         this.idJugador = truncarNombre(idJugador);
@@ -69,14 +35,6 @@ public abstract class Bingo {
         }
         
         return idJugador;
-    }
-    
-    public boolean removeId(String id) {
-        try {
-            return ids.remove(Integer.parseInt(id));
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 
     public String getIdJugador() {

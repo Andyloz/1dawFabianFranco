@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -21,12 +22,17 @@ public abstract class Bingo {
     private static int contador;
     
     private void fillIds() {
-        if (ids == null) {
-            ids = new HashSet<>();
+        if (Bingo.ids == null) {
+            Bingo.ids = new HashSet<>();
             
             try {
                 BingoMysqlDao dao = new BingoMysqlDao();
-                ids.addAll(dao.getAllIds());
+                List<Integer> ids = dao.getAllIds();
+                
+                if (ids != null) {
+                    Bingo.ids.addAll(ids);
+                }
+                    
             } catch (SQLException e) {}
         }
     }

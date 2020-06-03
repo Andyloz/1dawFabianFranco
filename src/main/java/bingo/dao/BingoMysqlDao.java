@@ -29,13 +29,19 @@ public class BingoMysqlDao implements BingoDao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public List<Integer> getAllIds() throws SQLException {
+    public List<Integer> getAllIds() {
         String sql = "select id from partida";
         List<Integer> ids = new ArrayList<>();
         
-        ResultSet set = con.createStatement().executeQuery(sql);
-        while (set.next()) {            
-            ids.add(set.getInt("id"));
+        try {
+            
+            ResultSet rset = con.createStatement().executeQuery(sql);
+            while (rset.next()) {            
+                ids.add(rset.getInt("id"));
+            }
+            
+        } catch (SQLException e) {
+            return null;
         }
         
         return ids;

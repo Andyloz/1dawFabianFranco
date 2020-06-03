@@ -39,6 +39,6 @@ public final class BingoEuropeo extends Bingo {
 
     @Override
     public String toString() {
-        return "BingoEuropeo{" + super.toString() + ", carton=" + carton + ", bombo=" + bombo + '}';
+        return super.toString() + "Europeo";
     }
 }

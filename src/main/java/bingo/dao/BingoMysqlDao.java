@@ -7,7 +7,10 @@ package bingo.dao;
 
 import bingo.Bingo;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +27,18 @@ public class BingoMysqlDao implements BingoDao {
     @Override
     public List<Bingo> getAllBingos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<Integer> getAllIds() throws SQLException {
+        String sql = "select id from partida";
+        List<Integer> ids = new ArrayList<>();
+        
+        ResultSet set = con.createStatement().executeQuery(sql);
+        while (set.next()) {            
+            ids.add(set.getInt("id"));
+        }
+        
+        return ids;
     }
 
     @Override

@@ -8,6 +8,7 @@ package bingo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 /**
  *
@@ -48,6 +49,11 @@ public abstract class Bingo implements Serializable {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+    
+    public String toPrettyString() {
+        String fechaF = fecha.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+        return "ID: " + id + "\tFecha: " + fechaF + "\tJugador: " + idJugador;
     }
 
     @Override

@@ -70,6 +70,14 @@ public abstract class Bingo {
         
         return idJugador;
     }
+    
+    public boolean removeId(String id) {
+        try {
+            return ids.remove(Integer.parseInt(id));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
     public String getIdJugador() {
         return idJugador;

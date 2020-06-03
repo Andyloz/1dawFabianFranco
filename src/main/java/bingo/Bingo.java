@@ -5,20 +5,40 @@
  */
 package bingo;
 
+import bingo.dao.BingoMysqlDao;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.HashSet;
 
 /**
  *
  * @author andyloz
  */
 public abstract class Bingo {
+    private static HashSet<Integer> ids = null;
+    private static int contador = 0;
+    
+    private void fillIds() {
+        if (ids == null) {
+            ids = new HashSet<>();
+            
+            try {
+                BingoMysqlDao dao = new BingoMysqlDao();
+                ids.addAll(dao.getAllIds());
+            } catch (SQLException e) {}
+        }
+    }
+    
+    
     private String id;
     private LocalDate fecha;
     private String idJugador;
-
+    
     public Bingo(String id, LocalDate fecha, String idJugador) {
+        fillIds();
+        
         this.id = id;
         this.fecha = fecha;
         this.idJugador = truncarNombre(idJugador);

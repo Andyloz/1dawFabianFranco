@@ -43,6 +43,8 @@ public abstract class Bingo {
     private String idJugador;
 
     public Bingo(String idJugador) {
+        fillIds();
+        
         this.idJugador = truncarNombre(idJugador);
         this.fecha = LocalDate.now();
         

@@ -157,7 +157,7 @@ public abstract class Carton {
     
     @Override
     public String toString() {
-        String str = "";
+        String str = "[";
         
         for (int fil = 0; fil < matriz.length; fil++) {
             for (int col = 0; col < matriz[fil].length; col++) {
@@ -169,6 +169,6 @@ public abstract class Carton {
             }
         }
         
-        return str;
+        return str + "]";
     }
 }

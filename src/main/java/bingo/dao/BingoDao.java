@@ -14,9 +14,9 @@ import java.util.List;
  */
 public interface BingoDao {
     
-    List<Bingo> getAllBingos();
+    List<Bingo> getAllPartidas();
     Bingo getById();
-    boolean saveBingo();
-    boolean deleteBingo();
+    boolean savePartida();
+    boolean deletePartida();
     
 }

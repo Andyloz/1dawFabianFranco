@@ -25,7 +25,7 @@ public class BingoMysqlDao implements BingoDao {
     }
 
     @Override
-    public List<Bingo> getAllBingos() {
+    public List<Bingo> getAllPartidas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -47,12 +47,12 @@ public class BingoMysqlDao implements BingoDao {
     }
 
     @Override
-    public boolean saveBingo() {
+    public boolean savePartida() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean deleteBingo() {
+    public boolean deletePartida() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

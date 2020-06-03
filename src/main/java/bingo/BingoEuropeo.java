@@ -24,11 +24,12 @@ public final class BingoEuropeo extends Bingo {
         this.bombo = new BomboEuropeo();
     }
     
-    public BingoEuropeo(String id, LocalDate fecha, String idJugador) {
+    public BingoEuropeo(String id, LocalDate fecha, String idJugador,
+            CartonEuropeo carton, BomboEuropeo bombo) {
         super(id, fecha, idJugador);
         
-        this.carton = new CartonEuropeo();
-        this.bombo = new BomboEuropeo();
+        this.carton = carton;
+        this.bombo = bombo;
     }    
 
     public CartonEuropeo getCarton() {

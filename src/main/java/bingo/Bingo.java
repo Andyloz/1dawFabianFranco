@@ -18,7 +18,7 @@ import java.util.HashSet;
  */
 public abstract class Bingo {
     private static HashSet<Integer> ids = null;
-    private static int contador = 0;
+    private static int contador;
     
     private void fillIds() {
         if (ids == null) {
@@ -35,6 +35,17 @@ public abstract class Bingo {
     private String id;
     private LocalDate fecha;
     private String idJugador;
+
+    public Bingo(String idJugador) {
+        this.idJugador = truncarNombre(idJugador);
+        this.fecha = LocalDate.now();
+        
+        while (!ids.add(contador)) {            
+            contador++;
+        }
+        
+        this.id = String.valueOf(contador);
+    }
     
     public Bingo(String id, LocalDate fecha, String idJugador) {
         fillIds();

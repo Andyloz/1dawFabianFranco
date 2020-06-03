@@ -6,6 +6,7 @@
 package bingo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -48,6 +49,7 @@ public abstract class Bingo {
 
     @Override
     public String toString() {
-        return "Bingo{" + "id=" + id + ", fecha=" + fecha + ", idJugador=" + idJugador + '}';
+        String fechaF = fecha.format(DateTimeFormatter.ofPattern("dd-MM-uuuu"));
+        return "ID: " + id + ", Fecha: " + fechaF + ", Jugador: " + idJugador;
     }
 }

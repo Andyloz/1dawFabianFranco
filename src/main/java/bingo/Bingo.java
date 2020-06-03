@@ -21,7 +21,15 @@ public abstract class Bingo {
     public Bingo(String id, LocalDate fecha, String idJugador) {
         this.id = id;
         this.fecha = fecha;
-        this.idJugador = idJugador;
+        this.idJugador = truncarNombre(idJugador);
+    }
+    
+    private String truncarNombre(String idJugador) {
+        if (idJugador.length() > 50) {
+            idJugador = idJugador.substring(0, 50);
+        }
+        
+        return idJugador;
     }
 
     public String getIdJugador() {

@@ -42,4 +42,9 @@ public abstract class Bombo {
     protected List<Integer> getListaBolas() {
         return listaBolas;
     }
+
+    @Override
+    public String toString() {
+        return listaBolas.toString();
+    }
 }

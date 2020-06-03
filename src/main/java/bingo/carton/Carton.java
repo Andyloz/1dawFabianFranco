@@ -41,6 +41,40 @@ public abstract class Carton {
         return null;
     }
     
+    public int casillasDescubiertas() {
+        int contador = 0;
+        
+        int filas = matriz.length;
+        int columnas = matriz[0].length;
+        
+        for (int fil = 0; fil < filas; fil++) {
+            for (int col = 0; col < columnas; col++) {
+                if (matriz[fil][col] > 0) {
+                    contador++;
+                }
+            }
+        }
+        
+        return contador;
+    }
+    
+    public int casillasTachadas() {
+        int contador = 0;
+        
+        int filas = matriz.length;
+        int columnas = matriz[0].length;
+        
+        for (int fil = 0; fil < filas; fil++) {
+            for (int col = 0; col < columnas; col++) {
+                if (matriz[fil][col] == -1) {
+                    contador++;
+                }
+            }
+        }
+        
+        return contador;
+    }
+    
     public boolean esLinea(int numFila) {
         if (numFila < 0 || numFila > matriz.length) {
             throw new IndexOutOfBoundsException(numFila);

@@ -5,6 +5,7 @@
  */
 package bingo.bombo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import java.util.List;
  *
  * @author andyloz
  */
-public abstract class Bombo {
+public abstract class Bombo implements Serializable {
+    private static final long serialVersionUID = 201578772L;
+    
     private List<Integer> listaBolas;
 
     public Bombo() {

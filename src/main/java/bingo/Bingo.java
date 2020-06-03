@@ -5,6 +5,7 @@
  */
 package bingo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -12,7 +13,9 @@ import java.time.format.DateTimeFormatter;
  *
  * @author andyloz
  */
-public abstract class Bingo {
+public abstract class Bingo implements Serializable {
+    private static final long serialVersionUID = 435401169L;
+    
     private String id;
     private LocalDate fecha;
     private String idJugador;

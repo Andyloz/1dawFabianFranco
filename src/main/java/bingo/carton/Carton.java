@@ -6,12 +6,15 @@
 package bingo.carton;
 
 import java.awt.Point;
+import java.io.Serializable;
 
 /**
  *
  * @author andyloz
  */
-public abstract class Carton {
+public abstract class Carton implements Serializable {
+    private static final long serialVersionUID = 461000132L;
+    
     // 0 -> No rellena   x > 0 -> Rellena   x < 0 -> Tachada 
     private int[][] matriz;
 

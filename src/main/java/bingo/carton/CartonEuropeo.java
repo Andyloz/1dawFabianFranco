@@ -19,6 +19,7 @@ import java.util.stream.IntStream;
  * @author andyloz
  */
 public final class CartonEuropeo extends Carton {
+    private static final long serialVersionUID = 539654071L;
     
     public static final int FILAS = 3;
     public static final int COLUMNAS = 9;

@@ -15,6 +15,8 @@ import java.util.stream.IntStream;
  * @author andyloz
  */
 public final class BomboAmericano extends Bombo {
+    private static final long serialVersionUID = 723074743L;
+    
     public static final int CANTIDAD_BOLAS = 75;
 
     public BomboAmericano() {

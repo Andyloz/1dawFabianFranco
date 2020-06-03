@@ -14,6 +14,7 @@ import java.time.LocalDate;
  * @author andyloz
  */
 public final class BingoEuropeo extends Bingo {
+    private static final long serialVersionUID = 882377526L;
     
     private CartonEuropeo carton;
     private BomboEuropeo bombo;

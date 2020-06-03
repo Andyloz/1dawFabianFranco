@@ -5,10 +5,36 @@
  */
 package bingo;
 
+import bingo.bombo.BomboAmericano;
+import bingo.carton.CartonAmericano;
+import java.time.LocalDate;
+
 /**
  *
  * @author andyloz
  */
 public final class BingoAmericano extends Bingo {
     
+    private CartonAmericano carton;
+    private BomboAmericano bombo;
+    
+    public BingoAmericano(String id, LocalDate fecha, String idJugador) {
+        super(id, fecha, idJugador);
+        
+        this.carton = new CartonAmericano();
+        this.bombo = new BomboAmericano();
+    }
+
+    public CartonAmericano getCarton() {
+        return carton;
+    }
+
+    public BomboAmericano getBombo() {
+        return bombo;
+    }
+
+    @Override
+    public String toString() {
+        return "BingoAmericano{" + "carton=" + carton + ", bombo=" + bombo + '}';
+    }
 }

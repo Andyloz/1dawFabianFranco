@@ -33,6 +33,11 @@ public final class BingoAmericano extends Bingo {
     public BomboAmericano getBombo() {
         return bombo;
     }
+    
+    @Override
+    public String toPrettyString() {
+        return "Bingo Americano -> " + super.toPrettyString();
+    }
 
     @Override
     public String toString() {

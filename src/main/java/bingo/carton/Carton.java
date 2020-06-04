@@ -20,6 +20,10 @@ public abstract class Carton {
         generarCarton();
     }
     
+    public Carton(int[][] matriz) {
+        this.matriz = matriz;
+    }
+    
     public abstract void generarCarton();
     
     public Point tacharNumero(int numero) {

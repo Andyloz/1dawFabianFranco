@@ -26,6 +26,10 @@ public final class CartonEuropeo extends Carton {
         super(FILAS, COLUMNAS);
     }
 
+    public CartonEuropeo(int[][] matriz) {
+        super(matriz);
+    }
+
     @Override
     public void generarCarton() {
         int CANTIDAD_BOLAS = BomboEuropeo.CANTIDAD_BOLAS;

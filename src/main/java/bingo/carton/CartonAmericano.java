@@ -24,6 +24,11 @@ public final class CartonAmericano extends Carton {
         this.premio = generarPremio();
     }
 
+    public CartonAmericano(int[][] matriz) {
+        super(matriz);
+        this.premio = generarPremio();
+    }
+
     @Override
     public void generarCarton() {
         HashSet<Integer>[] numeros = new HashSet[COLUMNAS];

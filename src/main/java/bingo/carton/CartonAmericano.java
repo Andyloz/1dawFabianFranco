@@ -48,8 +48,8 @@ public final class CartonAmericano extends Carton {
         
         // Generamos los números por columnas
         for (int col = 0; col < COLUMNAS; col++) {
-            int rangoOrigen = 15 * col; // Número mínimo a generar
-            int limiteRango = 16; // Cantidad de números a partir del mín.
+            int rangoOrigen = 15 * col + 1; // Número mínimo a generar
+            int limiteRango = 15; // Cantidad de números a partir del mín.
             
             do {
                 numeros[col].add(random.nextInt(limiteRango) + rangoOrigen);

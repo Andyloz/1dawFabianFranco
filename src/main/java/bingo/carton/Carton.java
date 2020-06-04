@@ -114,7 +114,7 @@ public abstract class Carton {
         this.matriz = matriz;
     }
     
-    public String imprimirCarton() {
+    public String toPrettyString() {
         String head = "╔════";
         String mid =  "╠════";
         String tail = "╚════";

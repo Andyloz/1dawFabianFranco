@@ -21,6 +21,10 @@ public final class BomboAmericano extends Bombo {
         super();
     }
 
+    public BomboAmericano(List<Integer> listaBolas) {
+        super(listaBolas);
+    }
+
     @Override
     public void llenarBombo() {
         List<Integer> bolas = this.getListaBolas();

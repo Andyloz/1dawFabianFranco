@@ -19,6 +19,10 @@ public abstract class Bombo {
         listaBolas = new ArrayList<>();
         llenarBombo();
     }
+
+    public Bombo(List<Integer> listaBolas) {
+        this.listaBolas = listaBolas;
+    }
     
     public int sacarBola() {
         // Devolver el último número de la lista si hay bolas disponibles

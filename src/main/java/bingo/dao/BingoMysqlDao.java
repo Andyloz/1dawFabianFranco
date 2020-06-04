@@ -6,6 +6,9 @@
 package bingo.dao;
 
 import bingo.Bingo;
+import bingo.bombo.Bombo;
+import bingo.bombo.BomboAmericano;
+import bingo.bombo.BomboEuropeo;
 import bingo.carton.Carton;
 import bingo.carton.CartonAmericano;
 import bingo.carton.CartonEuropeo;
@@ -15,6 +18,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -95,6 +100,21 @@ public class BingoMysqlDao implements BingoDao {
                 return new CartonAmericano(matriz);
             case "Europeo":
                 return new CartonEuropeo(matriz);
+            default:
+                return null;
+        }
+    }
+    
+    private Bombo buildBombo(String tipo, String bomboIn) {
+        List<Integer> listaBolas = Stream.of(bomboIn.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        
+        switch (tipo) {
+            case "Americano":
+                return new BomboAmericano(listaBolas);
+            case "Europeo":
+                return new BomboEuropeo(listaBolas);
             default:
                 return null;
         }

@@ -8,6 +8,7 @@ package bingo.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.TimeZone;
 
 /**
  *
@@ -20,7 +21,7 @@ public class BingoMysqlCon {
     private static final String BD = "bingo";
     private static final String USER = "bingo";
     private static final String PASS = "bingo";
-    //private static final String PARAMS;
+    private static final String PARAMS = "?serverTimezone=" + TimeZone.getDefault().getID();
 
     private BingoMysqlCon() {
     }
@@ -28,7 +29,7 @@ public class BingoMysqlCon {
     public static Connection getInstance() throws SQLException {
         
         if (conexion == null) {
-            conexion = DriverManager.getConnection(SERVIDOR + BD, USER, PASS);
+            conexion = DriverManager.getConnection(SERVIDOR + BD + PARAMS, USER, PASS);
         }
         
         return conexion;

@@ -49,6 +49,7 @@ public abstract class Bombo {
 
     @Override
     public String toString() {
-        return listaBolas.toString();
+        String str = listaBolas.toString().replace(" ", "");
+        return str.substring(1, str.length() - 1);
     }
 }

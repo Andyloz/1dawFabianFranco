@@ -24,10 +24,12 @@ public final class CartonEuropeo extends Carton {
 
     public CartonEuropeo() {
         super(FILAS, COLUMNAS);
+        this.generarCarton();
     }
 
     public CartonEuropeo(int[][] matriz) {
         super(matriz);
+        this.generarCarton();
     }
 
     @Override

@@ -17,7 +17,6 @@ public abstract class Carton {
 
     public Carton(int filas, int columnas) {
         matriz = new int[filas][columnas];
-        generarCarton();
     }
     
     public Carton(int[][] matriz) {

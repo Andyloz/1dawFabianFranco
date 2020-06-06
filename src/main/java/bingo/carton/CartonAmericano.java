@@ -22,11 +22,13 @@ public final class CartonAmericano extends Carton {
     public CartonAmericano() {
         super(FILAS, COLUMNAS);
         this.premio = generarPremio();
+        this.generarCarton();
     }
 
     public CartonAmericano(int[][] matriz) {
         super(matriz);
         this.premio = generarPremio();
+        this.generarCarton();
     }
 
     @Override

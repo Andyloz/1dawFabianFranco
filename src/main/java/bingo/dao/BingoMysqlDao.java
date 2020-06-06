@@ -15,6 +15,7 @@ import bingo.carton.Carton;
 import bingo.carton.CartonAmericano;
 import bingo.carton.CartonEuropeo;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -73,7 +74,20 @@ public class BingoMysqlDao implements BingoDao {
 
     @Override
     public Bingo getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from partida where id = ?";
+        
+        try {
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, id);
+            
+            ResultSet rset = st.executeQuery();
+            rset.next();
+            
+            return getPartidaFromCurrentRow(rset);
+            
+        } catch (SQLException e) {
+            return null;
+        }
     }
 
     @Override

@@ -72,12 +72,12 @@ public class BingoMysqlDao implements BingoDao {
     }
 
     @Override
-    public Bingo getById() {
+    public Bingo getById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean savePartida() {
+    public boolean savePartida(Bingo bingo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

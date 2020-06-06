@@ -6,6 +6,8 @@
 package bingo.dao;
 
 import bingo.Bingo;
+import bingo.BingoAmericano;
+import bingo.BingoEuropeo;
 import bingo.bombo.Bombo;
 import bingo.bombo.BomboAmericano;
 import bingo.bombo.BomboEuropeo;
@@ -68,6 +70,30 @@ public class BingoMysqlDao implements BingoDao {
     @Override
     public boolean deletePartida() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private Bingo getPartidaFromCurrentRow(ResultSet rset) throws SQLException {
+        Bingo bingo = null;
+        
+        String id = rset.getString("id");
+        LocalDate fecha = rset.getDate("fecha").toLocalDate();
+        String idJugador = rset.getString("idJugador");
+        String tipo = rset.getString("tipo");
+
+        switch (tipo) {
+            case "Americano":
+                CartonAmericano cartonA = (CartonAmericano) buildCarton(tipo, rset.getString("carton"));
+                BomboAmericano bomboA = (BomboAmericano) buildBombo(tipo, rset.getString("bombo"));
+                bingo = new BingoAmericano(id, fecha, idJugador, cartonA, bomboA);
+                break;
+            case "Europeo":
+                CartonEuropeo cartonE = (CartonEuropeo) buildCarton(tipo, rset.getString("carton"));
+                BomboEuropeo bomboE = (BomboEuropeo) buildBombo(tipo, rset.getString("bombo"));
+                bingo = new BingoEuropeo(id, fecha, idJugador, cartonE, bomboE);
+                break;
+        }
+        
+        return bingo;
     }
     
     private Carton buildCarton(String tipo, String cartonIn) {

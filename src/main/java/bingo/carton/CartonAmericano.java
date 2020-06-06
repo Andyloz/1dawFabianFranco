@@ -44,7 +44,6 @@ public final class CartonAmericano extends Carton {
         
         this.generarNumeros(numeros);
         int[][] matriz = this.colocarNumeros(numeros);
-        matriz = this.retirarSobrantes(matriz);
         this.setMatriz(matriz);
     }
     
@@ -83,26 +82,18 @@ public final class CartonAmericano extends Carton {
         
         // Como los números de las columnas están en filas, tenemos que 
         // transponer el array bidimensional
+        
+        // Aprovecharemos para descartar las casillas que no pertenecen al patron
+        List<Point> puntosPremio = this.premio.getCoordenadas();
+        
         int[][] matriz = new int[FILAS][COLUMNAS];
         
         for (int col = 0; col < COLUMNAS; col++) {
             for (int fil = 0; fil < FILAS; fil++) {
-                matriz[fil][col] = matrizTranspuesta[col][fil];
-            }
-        }
-        
-        return matriz;
-    }
-    
-    private int[][] retirarSobrantes(int[][] matriz) {
-        List<Point> puntosPremio = this.premio.getCoordenadas();
-        
-        for (int fil = 0; fil < FILAS; fil++) {
-            for (int col = 0; col < COLUMNAS; col++) {
-                Point p = new Point(fil, col);
+                Point p = new Point(col, fil);
                 
-                if (!puntosPremio.contains(p)) {
-                    matriz[fil][col] = 0;
+                if (puntosPremio.contains(p)) {
+                    matriz[fil][col] = matrizTranspuesta[col][fil];
                 }
             }
         }

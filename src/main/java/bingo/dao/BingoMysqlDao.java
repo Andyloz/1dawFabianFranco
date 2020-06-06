@@ -83,7 +83,14 @@ public class BingoMysqlDao implements BingoDao {
 
     @Override
     public boolean deletePartida() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql = "delete from partidas";
+            con.createStatement().executeUpdate(sql);
+        } catch (SQLException ex) {
+            return false;
+        }
+        
+        return true;
     }
     
     private Bingo getPartidaFromCurrentRow(ResultSet rset) throws SQLException {

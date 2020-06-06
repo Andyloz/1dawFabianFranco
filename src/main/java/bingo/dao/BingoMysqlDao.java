@@ -36,7 +36,21 @@ public class BingoMysqlDao implements BingoDao {
 
     @Override
     public List<Bingo> getAllPartidas() {
-    	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from partida";
+        List<Bingo> partidas = new ArrayList<>();
+        
+        try {
+            
+            ResultSet rset = con.createStatement().executeQuery(sql);
+            while (rset.next()) { 
+                partidas.add(getPartidaFromCurrentRow(rset));
+            }
+            
+        } catch (SQLException e) {
+            return null;
+        }
+        
+        return partidas;
     }
     
     public List<Integer> getAllIds() {

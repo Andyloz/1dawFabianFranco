@@ -14,29 +14,33 @@ import java.util.List;
  */
 public enum Patron {
     
+    COMPLETO("Carton completo",
+            new Point(0,0), new Point(0,1), new Point(0,2), new Point(0,3), /*************/
+            new Point(1,0), /*************/ /*************/ new Point(1,3), /*************/
+            new Point(2,0), /*************/ new Point(2,2), new Point(2,3), new Point(2,4),
+            new Point(3,0), /*************/ /*************/ new Point(3,3), /*************/
+            new Point(4,0), /*************/ new Point(4,2), /*************/ new Point(4,4)),
+    
     AHORCADO("El tradicional ahorcado",
-            new Point(0,0), new Point(0,1), new Point(0,2), new Point(0,3),
-            new Point(0,4), new Point(1,4), new Point(2,4), new Point(2,0),
-            new Point(2,2), new Point(2,4), new Point(3,1), new Point(3,2),
-            new Point(3,3), new Point(3,4), new Point(4,0), new Point(4,2)),
+            new Point(0,0), new Point(0,1), new Point(0,2), new Point(0,3), /*************/
+            new Point(1,0), /*************/ /*************/ new Point(1,3), /*************/
+            new Point(2,0), /*************/ new Point(2,2), new Point(2,3), new Point(2,4),
+            new Point(3,0), /*************/ /*************/ new Point(3,3), /*************/
+            new Point(4,0), /*************/ new Point(4,2), /*************/ new Point(4,4)),
     
-    COMPLETO("Relleno del carton completo, menos la casilla completa",
-            new Point(0,0), new Point(0,1), new Point(0,2), new Point(0,3),
-            new Point(0,4), new Point(1,0), new Point(1,1), new Point(1,2),
-            new Point(1,3), new Point(1,4), new Point(2,0), new Point(2,1),
-            new Point(2,3), new Point(2,4), new Point(3,0), new Point(3,1),
-            new Point(3,2), new Point(3,3), new Point(3,4), new Point(4,0),
-            new Point(4,1), new Point(4,2), new Point(4,3), new Point(4,4)),
+    EXPLOSION("Booooooomm...",
+            new Point(0,0), /*************/ /*************/ /*************/ new Point(0,4),
+            /*************/ /*************/ new Point(1,2), /*************/ /*************/
+            /*************/ new Point(2,1), new Point(2,2), new Point(2,3), /*************/
+            /*************/ /*************/ new Point(3,2), /*************/ /*************/
+            new Point(4,0), /*************/ /*************/ /*************/ new Point(4,4)),
     
-    EXPLOSION("Booommm",
-            new Point(0,0), new Point(0,4), new Point(1,2), new Point(2,1),
-            new Point(2,2), new Point(2,3), new Point(3,2), new Point(4,1),
-            new Point(4,4)),
-    
-    X("Una equis en el tablero",
-            new Point(0,0), new Point(0,4), new Point(1,1), new Point(1,3),
-            new Point(2,2), new Point(3,1), new Point(3,3), new Point(4,1),
-            new Point(4,4));
+    X("La letra X",
+            new Point(0,0), /*************/ /*************/ /*************/ new Point(0,4),
+            /*************/ new Point(1,1), /*************/ new Point(1,3), /*************/
+            /*************/ /*************/ new Point(2,2), /*************/ /*************/
+            /*************/ new Point(3,1), /*************/ new Point(3,3), /*************/
+            new Point(4,0), /*************/ /*************/ /*************/ new Point(4,4));
     
     
     private final String descripcion;

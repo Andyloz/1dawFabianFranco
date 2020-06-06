@@ -6,7 +6,9 @@
 package bingo.carton;
 
 import bingo.Patron;
+import java.awt.Point;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -40,8 +42,10 @@ public final class CartonAmericano extends Carton {
             numeros[col] = new HashSet<>();
         }
         
-        generarNumeros(numeros);
-        colocarNumeros(numeros);
+        this.generarNumeros(numeros);
+        int[][] matriz = this.colocarNumeros(numeros);
+        matriz = this.retirarSobrantes(matriz);
+        this.setMatriz(matriz);
     }
     
     
@@ -63,7 +67,7 @@ public final class CartonAmericano extends Carton {
         }
     }
     
-    private void colocarNumeros(HashSet<Integer>[] numeros) {
+    private int[][] colocarNumeros(HashSet<Integer>[] numeros) {
         int[][] matrizTranspuesta = new int[FILAS][];
         
         // Pasamos cada set al array y lo asignamos a su correspondiente fila
@@ -87,7 +91,23 @@ public final class CartonAmericano extends Carton {
             }
         }
         
-        this.setMatriz(matriz);
+        return matriz;
+    }
+    
+    private int[][] retirarSobrantes(int[][] matriz) {
+        List<Point> puntosPremio = this.premio.getCoordenadas();
+        
+        for (int fil = 0; fil < FILAS; fil++) {
+            for (int col = 0; col < COLUMNAS; col++) {
+                Point p = new Point(fil, col);
+                
+                if (!puntosPremio.contains(p)) {
+                    matriz[fil][col] = 0;
+                }
+            }
+        }
+        
+        return matriz;
     }
 
     private Patron generarPremio() {

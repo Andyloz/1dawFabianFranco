@@ -14,30 +14,14 @@ import java.time.LocalDate;
  * @author andyloz
  */
 public final class BingoAmericano extends Bingo {
-    private CartonAmericano carton;
-    private BomboAmericano bombo;
     
     public BingoAmericano(String idJugador) {
-        super(idJugador);
-        
-        this.carton = new CartonAmericano();
-        this.bombo = new BomboAmericano();
+        super(idJugador, new CartonAmericano(), new BomboAmericano());
     }
     
     public BingoAmericano(String id, LocalDate fecha, String idJugador,
             CartonAmericano carton, BomboAmericano bombo) {
-        super(id, fecha, idJugador);
-        
-        this.carton = carton;
-        this.bombo = bombo;
-    }
-
-    public CartonAmericano getCarton() {
-        return carton;
-    }
-
-    public BomboAmericano getBombo() {
-        return bombo;
+        super(id, fecha, idJugador, carton, bombo);
     }
     
     @Override

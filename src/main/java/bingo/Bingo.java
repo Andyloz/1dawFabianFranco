@@ -5,6 +5,8 @@
  */
 package bingo;
 
+import bingo.bombo.Bombo;
+import bingo.carton.Carton;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -17,16 +19,24 @@ public abstract class Bingo {
     private String id;
     private LocalDate fecha;
     private String idJugador;
+    
+    private Carton carton;
+    private Bombo bombo;
 
-    public Bingo(String idJugador) {
+    public Bingo(String idJugador, Carton carton, Bombo bombo) {
         this.idJugador = truncarNombre(idJugador);
         this.fecha = LocalDate.now();
+        this.carton = carton;
+        this.bombo = bombo;
     }
     
-    public Bingo(String id, LocalDate fecha, String idJugador) {
+    public Bingo(String id, LocalDate fecha, String idJugador,
+            Carton carton, Bombo bombo) {
         this.id = id;
         this.fecha = fecha;
         this.idJugador = truncarNombre(idJugador);
+        this.carton = carton;
+        this.bombo = bombo;
     }
     
     private String truncarNombre(String idJugador) {
@@ -59,6 +69,14 @@ public abstract class Bingo {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+
+    public Carton getCarton() {
+        return carton;
+    }
+
+    public Bombo getBombo() {
+        return bombo;
     }
     
     public String toPrettyString() {

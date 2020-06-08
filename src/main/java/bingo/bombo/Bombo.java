@@ -7,6 +7,7 @@ package bingo.bombo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -53,8 +54,10 @@ public abstract class Bombo {
         return listaBolas;
     }
 
-    public List<Integer> getBolasSacadas() {
-        return bolasSacadas;
+    public List<Integer> getBolasSacadas(int num) {
+        return this.bolasSacadas.stream()
+                .limit(num)
+                .collect(Collectors.toList());
     }
 
     @Override

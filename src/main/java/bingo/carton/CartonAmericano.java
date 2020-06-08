@@ -76,9 +76,6 @@ public final class CartonAmericano extends Carton {
                     .toArray();
         }
         
-        // Casilla central vacía
-        matrizTranspuesta[2][2] = 0;
-        
         // Como los números de las columnas están en filas, tenemos que 
         // transponer el array bidimensional
         
@@ -89,7 +86,7 @@ public final class CartonAmericano extends Carton {
         
         for (int col = 0; col < COLUMNAS; col++) {
             for (int fil = 0; fil < FILAS; fil++) {
-                Point p = new Point(col, fil);
+                Point p = new Point(fil, col);
                 
                 if (puntosPremio.contains(p)) {
                     matriz[fil][col] = matrizTranspuesta[col][fil];

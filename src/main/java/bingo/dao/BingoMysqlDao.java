@@ -15,10 +15,13 @@ import bingo.carton.Carton;
 import bingo.carton.CartonAmericano;
 import bingo.carton.CartonEuropeo;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -107,7 +110,34 @@ public class BingoMysqlDao implements BingoDao {
 
     @Override
     public boolean savePartida(Bingo bingo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "insert into partida values (?,?,?,?,?,?)";
+        bingo.setId(freeId());
+        
+        try {
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, bingo.getId());
+            st.setDate(2, Date.valueOf(bingo.getFecha()));
+            st.setString(3, bingo.getIdJugador());
+            
+            String tipo;
+            
+            if (bingo instanceof BingoAmericano) {
+                tipo = "Americano";
+            } else if (bingo instanceof BingoEuropeo) {
+                tipo = "Europeo";
+            }
+            st.setString(4, sql);
+            
+            st.setString(5, bingo.getBombo().toString());
+            st.setString(6, bingo.getCarton().toString());
+            
+            return st.executeUpdate() == 1;
+            
+        } catch (SQLException e) {
+            return false;
+        } catch (SQLIntegrityConstraintViolationException) {
+            
+        }
     }
     
     private String freeId() {

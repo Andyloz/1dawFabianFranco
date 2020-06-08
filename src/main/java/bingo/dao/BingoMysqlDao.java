@@ -127,8 +127,10 @@ public class BingoMysqlDao implements BingoDao {
                 tipo = "Americano";
             } else if (bingo instanceof BingoEuropeo) {
                 tipo = "Europeo";
+            } else {
+                return false;
             }
-            st.setString(4, sql);
+            st.setString(4, tipo);
             
             st.setString(5, bingo.getBombo().toString());
             st.setString(6, bingo.getCarton().toString());

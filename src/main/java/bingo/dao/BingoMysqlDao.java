@@ -38,7 +38,6 @@ public class BingoMysqlDao implements BingoDao {
         if (ids == null) {
             try {
                 BingoMysqlDao dao = new BingoMysqlDao();
-                
                 ids = new HashSet<>(dao.getAllIds());
                 
             } catch (SQLException e) {}
@@ -114,11 +113,10 @@ public class BingoMysqlDao implements BingoDao {
     private String freeId() {
         fillIds();
         
-        String id = LocalDate.now().toString();
-        int contador = 0;
+        String id = LocalDateTime.now().toString();
         
         while (!ids.add(id)) {
-            id = LocalDate.now().toString() + "_" + ++contador;
+            id = LocalDateTime.now().toString();
         }
         
         return id;

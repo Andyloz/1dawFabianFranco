@@ -49,7 +49,8 @@ public class Aplicacion {
 
     public static void main(String[] args) {
         while (true) {
-            System.out.println(bienvenida + "\n\n"
+            System.out.println("\n\n"
+                    + bienvenida + "\n\n"
                     + "(1) Jugar\n"
                     + "(0) Salir");
             
@@ -73,14 +74,16 @@ public class Aplicacion {
                     + "(0) Volver");
 
             Bingo bingo = null;
-            switch (scannerInt(0, 2)) {
-                default:
-                    System.out.println("\n");
+            switch (scannerInt(0, 1)) {
                 case 1:
+                    System.out.println("\n");
                     bingo = crearPartida();
+                    System.out.println("\n");
                     break;
                 case 2:
+                    System.out.println("\n");
                     bingo = partidasGuardadas();
+                    System.out.println("\n");
                     break;
                 case 0:
                     return;
@@ -88,6 +91,7 @@ public class Aplicacion {
             
             if (bingo != null) {
                 juego(bingo);
+                return;
             }
         }
     }
@@ -101,12 +105,10 @@ public class Aplicacion {
         
         System.out.println("Seleccione:\n\n"
                 + "(1) Bingo Americano\n"
-                + "(2) Bingo Europeo"
+                + "(2) Bingo Europeo\n"
                 + "(0) Volver");
         
         switch (scannerInt(0, 2)) {
-            default:
-                System.out.println("\n");
             case 1:
                 bingo = new BingoAmericano(nombre);
                 break;
@@ -119,11 +121,12 @@ public class Aplicacion {
     }
     
     private static Bingo partidasGuardadas() {
-        Bingo bingo;
+        Bingo bingo = null;
+        return bingo;
     }
     
     private static void juego(Bingo bingo) {
-        
+        System.out.println(bingo);
     }
     
     private static String scannerString() {

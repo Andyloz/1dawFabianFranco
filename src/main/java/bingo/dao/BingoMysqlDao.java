@@ -14,6 +14,7 @@ import bingo.bombo.BomboEuropeo;
 import bingo.carton.Carton;
 import bingo.carton.CartonAmericano;
 import bingo.carton.CartonEuropeo;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -184,6 +185,21 @@ public class BingoMysqlDao implements BingoDao {
         }
         
         return true;
+    }
+
+    @Override
+    public boolean deletePartida(Bingo bingo) {
+        String sql = "delete from partida where id = ?";
+        
+        try {
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, bingo.getId());
+            
+            return st.executeUpdate() == 1;
+            
+        } catch (SQLException e) {
+            return false;
+        }
     }
     
     private Bingo getPartidaFromCurrentRow(ResultSet rset) throws SQLException {

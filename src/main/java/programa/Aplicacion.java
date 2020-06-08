@@ -19,7 +19,6 @@ import java.util.Scanner;
  */
 public class Aplicacion {
 
-    private static Scanner sc = new Scanner(System.in);
     private static String bienvenida = 
             "$$$$$$$\\  $$\\\n"
             + "$$  __$$\\ \\__|\n"
@@ -128,11 +127,15 @@ public class Aplicacion {
     }
     
     private static String scannerString() {
+        Scanner sc = new Scanner(System.in);
+        
         System.out.print("> ");
         return sc.nextLine();
     }
     
     private static int scannerInt(int ini, int fin) {
+        Scanner sc = new Scanner(System.in);
+        
         if (fin <= ini) {
             throw new IllegalArgumentException(
                     "Fin(" + fin +") mayor o igual que inicio(" + ini + ")");

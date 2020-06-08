@@ -81,7 +81,7 @@ public abstract class Bingo {
     
     public String toPrettyString() {
         String fechaF = fecha.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
-        return "ID: " + id + "\tFecha: " + fechaF + "\tJugador: " + idJugador;
+        return "Jugador: " + idJugador + "\tFecha: " + fechaF;
     }
 
     @Override

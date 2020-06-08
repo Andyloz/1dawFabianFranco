@@ -54,10 +54,22 @@ public abstract class Bombo {
         return listaBolas;
     }
 
-    public List<Integer> getBolasSacadas(int num) {
-        return this.bolasSacadas.stream()
-                .limit(num)
-                .collect(Collectors.toList());
+    public List<Integer> getUltBolasSacadas(int num) {
+        if (num <= 0) {
+            throw new IllegalArgumentException("num ("+ num +") debe ser mayor que 0");
+        }
+        
+        List<Integer> bolas = new ArrayList<>();
+        
+        if (num > bolasSacadas.size()) {
+            num = bolasSacadas.size();
+        }
+        
+        for (int i = num; i > 0; i--) {
+            bolas.add(bolasSacadas.get(i-1));
+        }
+        
+        return bolas;
     }
 
     @Override

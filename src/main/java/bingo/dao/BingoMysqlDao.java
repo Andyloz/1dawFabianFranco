@@ -110,6 +110,19 @@ public class BingoMysqlDao implements BingoDao {
     public boolean savePartida(Bingo bingo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    private String freeId() {
+        fillIds();
+        
+        String id = LocalDate.now().toString();
+        int contador = 0;
+        
+        while (!ids.add(id)) {
+            id = LocalDate.now().toString() + "_" + ++contador;
+        }
+        
+        return id;
+    }
 
     @Override
     public boolean deletePartida() {

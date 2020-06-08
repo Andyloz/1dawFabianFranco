@@ -14,20 +14,26 @@ import java.util.List;
  */
 public abstract class Bombo {
     private List<Integer> listaBolas;
+    private List<Integer> bolasSacadas;
 
     public Bombo() {
         listaBolas = new ArrayList<>();
+        bolasSacadas = new ArrayList<>();
         llenarBombo();
     }
 
     public Bombo(List<Integer> listaBolas) {
         this.listaBolas = listaBolas;
+        bolasSacadas = new ArrayList<>();
     }
     
     public int sacarBola() {
         // Devolver el último número de la lista si hay bolas disponibles
         if (listaBolas.size() > 0) {
-            return listaBolas.remove(listaBolas.size() - 1);
+            int bola = listaBolas.remove(listaBolas.size() - 1);
+            // Añadimos la bola al historial de bolas sacadas y la devolvemos
+            bolasSacadas.add(bola);
+            return bola;
         }
         // Si no, devolver un número negativo
         return -1;
@@ -45,6 +51,10 @@ public abstract class Bombo {
 
     protected List<Integer> getListaBolas() {
         return listaBolas;
+    }
+
+    public List<Integer> getBolasSacadas() {
+        return bolasSacadas;
     }
 
     @Override

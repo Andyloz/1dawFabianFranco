@@ -20,6 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -30,6 +31,21 @@ import java.util.stream.Stream;
  */
 public class BingoMysqlDao implements BingoDao {
     public final Connection con;
+    
+    private static HashSet<String> ids;
+    
+    private static void fillIds() {
+        if (ids == null) {
+            try {
+                BingoMysqlDao dao = new BingoMysqlDao();
+                
+                ids = new HashSet<>(dao.getAllIds());
+                
+            } catch (SQLException e) {}
+        }
+    }
+    
+    
 
     public BingoMysqlDao() throws SQLException {
         this.con = BingoMysqlCon.getInstance();

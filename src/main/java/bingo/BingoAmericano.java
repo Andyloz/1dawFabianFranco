@@ -31,6 +31,6 @@ public final class BingoAmericano extends Bingo {
 
     @Override
     public String toString() {
-        return super.toString() + "Americano";
+        return "Americano," + super.toString();
     }
 }

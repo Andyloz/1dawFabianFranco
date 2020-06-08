@@ -30,7 +30,6 @@ public final class CartonAmericano extends Carton {
     public CartonAmericano(int[][] matriz) {
         super(matriz);
         this.premio = generarPremio();
-        this.generarCarton();
     }
 
     @Override

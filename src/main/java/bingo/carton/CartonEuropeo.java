@@ -29,7 +29,6 @@ public final class CartonEuropeo extends Carton {
 
     public CartonEuropeo(int[][] matriz) {
         super(matriz);
-        this.generarCarton();
     }
 
     @Override

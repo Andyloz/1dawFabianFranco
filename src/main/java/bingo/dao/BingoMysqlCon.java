@@ -32,6 +32,10 @@ public class BingoMysqlCon {
             conexion = DriverManager.getConnection(SERVIDOR + BD + PARAMS, USER, PASS);
         }
         
-        return conexion;
+        if (conexion.isValid(3)) {
+            return conexion;
+        } else {
+            throw new SQLException("No hay conexion");
+        }
     }
 }

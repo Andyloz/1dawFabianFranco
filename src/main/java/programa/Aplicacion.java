@@ -44,10 +44,24 @@ public class Aplicacion {
             return false;
         }
     }
+    
+    
+    
 
     public static void main(String[] args) {
         while (true) {            
+            System.out.println(bienvenida + "\n\n"
+                    + "(1) Jugar\n"
+                    + "(2) Salir");
             
+            switch (scannerInt(1, 2)) {
+                case 1:
+                    bingo();
+                    break;
+                case 2:
+                    System.exit(0);
+                    break;
+            }
         }
     }
     
@@ -60,7 +74,7 @@ public class Aplicacion {
         return sc.nextLine();
     }
     
-    private static int scannerIntPartida(int ini, int fin) {
+    private static int scannerInt(int ini, int fin) {
         if (fin <= ini) {
             throw new IllegalArgumentException(
                     "Fin(" + fin +") mayor o igual que inicio(" + ini + ")");

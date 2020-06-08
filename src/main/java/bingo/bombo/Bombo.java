@@ -65,8 +65,8 @@ public abstract class Bombo {
             num = bolasSacadas.size();
         }
         
-        for (int i = num; i > 0; i--) {
-            bolas.add(bolasSacadas.get(i-1));
+        for (int i = 1; i <= num; i++) {
+            bolas.add(bolasSacadas.get(bolasSacadas.size()-i));
         }
         
         return bolas;

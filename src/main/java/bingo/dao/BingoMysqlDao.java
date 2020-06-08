@@ -111,7 +111,9 @@ public class BingoMysqlDao implements BingoDao {
     @Override
     public boolean savePartida(Bingo bingo) {
         String sql = "insert into partida values (?,?,?,?,?,?)";
-        bingo.setId(freeId());
+        if (bingo.getId() == null) {
+            bingo.setId(freeId());
+        }
         
         try {
             PreparedStatement st = con.prepareStatement(sql);
@@ -133,10 +135,10 @@ public class BingoMysqlDao implements BingoDao {
             
             return st.executeUpdate() == 1;
             
+        } catch (SQLIntegrityConstraintViolationException e) {
+            return updatePartida(bingo);
         } catch (SQLException e) {
             return false;
-        } catch (SQLIntegrityConstraintViolationException) {
-            
         }
     }
     

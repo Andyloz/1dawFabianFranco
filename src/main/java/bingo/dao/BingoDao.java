@@ -17,6 +17,7 @@ public interface BingoDao {
     List<Bingo> getAllPartidas();
     Bingo getById(int id);
     boolean savePartida(Bingo bingo);
+    boolean updatePartida(Bingo bingo);
     boolean deletePartida();
     
 }

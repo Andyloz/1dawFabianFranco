@@ -20,8 +20,8 @@ public abstract class Bingo {
     private LocalDate fecha;
     private String idJugador;
     
-    private Carton carton;
-    private Bombo bombo;
+    private final Carton carton;
+    private final Bombo bombo;
 
     public Bingo(String idJugador, Carton carton, Bombo bombo) {
         this.idJugador = truncarNombre(idJugador);

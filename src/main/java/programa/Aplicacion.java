@@ -9,6 +9,7 @@ import bingo.Bingo;
 import bingo.BingoAmericano;
 import bingo.BingoEuropeo;
 import bingo.dao.BingoMysqlDao;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -33,8 +34,16 @@ public class Aplicacion {
             + "                         \\______/\n"
             + "--------------------------------------------";
     
-    static boolean bdActiva;
     static BingoMysqlDao dao;
+    
+    static boolean comprobarConBd() {
+        try {
+            dao = new BingoMysqlDao();
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
 
     public static void main(String[] args) {
         while (true) {            

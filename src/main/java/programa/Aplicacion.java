@@ -94,11 +94,33 @@ public class Aplicacion {
     }
     
     private static Bingo crearPartida() {
+        Bingo bingo = null;
         
+        System.out.println("¿Cual es tu nombre?");
+        String nombre = scannerString();
+        System.out.println("\n");
+        
+        System.out.println("Seleccione:\n\n"
+                + "(1) Bingo Americano\n"
+                + "(2) Bingo Europeo"
+                + "(0) Volver");
+        
+        switch (scannerInt(0, 2)) {
+            default:
+                System.out.println("\n");
+            case 1:
+                bingo = new BingoAmericano(nombre);
+                break;
+            case 2:
+                bingo = new BingoEuropeo(nombre);
+                break;
+        }
+        
+        return bingo;
     }
     
     private static Bingo partidasGuardadas() {
-        
+        Bingo bingo;
     }
     
     private static void juego(Bingo bingo) {

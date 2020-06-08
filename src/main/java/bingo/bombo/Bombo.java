@@ -27,7 +27,7 @@ public abstract class Bombo {
     public int sacarBola() {
         // Devolver el último número de la lista si hay bolas disponibles
         if (listaBolas.size() > 0) {
-            return listaBolas.get(listaBolas.size() - 1);
+            return listaBolas.remove(listaBolas.size() - 1);
         }
         // Si no, devolver un número negativo
         return -1;

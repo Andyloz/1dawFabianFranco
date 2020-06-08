@@ -92,12 +92,12 @@ public class BingoMysqlDao implements BingoDao {
     }
 
     @Override
-    public Bingo getById(int id) {
+    public Bingo getById(String id) {
         String sql = "select * from partida where id = ?";
         
         try {
             PreparedStatement st = con.prepareStatement(sql);
-            st.setInt(1, id);
+            st.setString(1, id);
             
             ResultSet rset = st.executeQuery();
             rset.next();

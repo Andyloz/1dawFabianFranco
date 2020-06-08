@@ -141,6 +141,24 @@ public class BingoMysqlDao implements BingoDao {
             return false;
         }
     }
+
+    @Override
+    public boolean updatePartida(Bingo bingo) {
+        String sql = "update partida set bombo = ?, carton = ? where id = ?";
+        
+        try {
+            PreparedStatement st = con.prepareStatement(sql);
+            
+            st.setString(1, bingo.getBombo().toString());
+            st.setString(2, bingo.getCarton().toString());
+            st.setString(3, bingo.getId());
+            
+            return st.executeUpdate() == 1;
+            
+        } catch (SQLException e) {
+            return false;
+        }
+    }
     
     private String freeId() {
         fillIds();

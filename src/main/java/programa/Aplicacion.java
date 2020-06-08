@@ -8,7 +8,11 @@ package programa;
 import bingo.Bingo;
 import bingo.BingoAmericano;
 import bingo.BingoEuropeo;
+import bingo.bombo.Bombo;
+import bingo.carton.Carton;
 import bingo.dao.BingoMysqlDao;
+import java.awt.Point;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -20,7 +24,7 @@ import java.util.Scanner;
 public class Aplicacion {
 
     private static String bienvenida = 
-            "$$$$$$$\\  $$\\\n"
+              "$$$$$$$\\  $$\\\n"
             + "$$  __$$\\ \\__|\n"
             + "$$ |  $$ |$$\\ $$$$$$$\\   $$$$$$\\   $$$$$$\\\n"
             + "$$$$$$$\\ |$$ |$$  __$$\\ $$  __$$\\ $$  __$$\\\n"
@@ -32,6 +36,12 @@ public class Aplicacion {
             + "                        \\$$$$$$  |\n"
             + "                         \\______/\n"
             + "--------------------------------------------";
+    
+    private static String empecemos =
+              " ___        __   ___  __   ___        __   __       /  /  /\n"
+            + "|__   |\\/| |__) |__  /  ` |__   |\\/| /  \\ /__`     /  /  / \n"
+            + "|___  |  | |    |___ \\__, |___  |  | \\__/ .__/    .  .  .  \n"
+            + "                                                           ";
     
     private static BingoMysqlDao dao;
     
@@ -90,7 +100,7 @@ public class Aplicacion {
             }
             
             if (bingo != null) {
-                juego(bingo);
+                jugar(bingo);
                 return;
             }
         }
@@ -121,12 +131,40 @@ public class Aplicacion {
     }
     
     private static Bingo partidasGuardadas() {
+        if (!comprobarConBd()) {
+            System.out.println("No hay conexion con la base de datos");
+            return null;
+        }
+        
         Bingo bingo = null;
         return bingo;
     }
     
-    private static void juego(Bingo bingo) {
-        System.out.println(bingo);
+    private static void jugar(Bingo bingo) {
+        Carton carton = bingo.getCarton();
+        Bombo bombo = bingo.getBombo();
+        
+        System.out.println(empecemos + "\n");
+        
+        while (!carton.esBingo()) {
+            Point p = carton.tacharNumero(bombo.sacarBola());
+            
+            System.out.println(carton.toPrettyString());
+            
+            if (p != null) {
+                int casilla = bombo.getUltBolasSacadas(1).get(0);
+                String coordenada = "[Fil "+ (p.x + 1) +", Col "+ (p.y + 1) +"]";
+                
+                System.out.println("Casilla "+ casilla +" tachada !!!" + coordenada);
+                
+            } else {
+                System.out.println("No se ha tachado ninguna casilla");
+            }
+            
+            System.out.println("\nUltimas bolas sacadas: " + bombo.getUltBolasSacadas(5));
+            enterParaContinuar();
+            System.out.println("\n");
+        }
     }
     
     private static String scannerString() {
@@ -181,5 +219,12 @@ public class Aplicacion {
         } while (opcion == ini - 1);
         
         return opcion;
+    }
+    
+    private static void enterParaContinuar() {
+        System.out.println("Presione [Enter] para continuar");
+        try {
+            System.in.read();
+        } catch (IOException ex) {}
     }
 }

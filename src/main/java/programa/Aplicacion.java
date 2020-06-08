@@ -8,6 +8,7 @@ package programa;
 import bingo.Bingo;
 import bingo.BingoAmericano;
 import bingo.BingoEuropeo;
+import bingo.dao.BingoMysqlDao;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,60 +19,66 @@ import java.util.Scanner;
 public class Aplicacion {
 
     static Scanner sc = new Scanner(System.in);
+    static String bienvenida = 
+            "$$$$$$$\\  $$\\\n"
+            + "$$  __$$\\ \\__|\n"
+            + "$$ |  $$ |$$\\ $$$$$$$\\   $$$$$$\\   $$$$$$\\\n"
+            + "$$$$$$$\\ |$$ |$$  __$$\\ $$  __$$\\ $$  __$$\\\n"
+            + "$$  __$$\\ $$ |$$ |  $$ |$$ /  $$ |$$ /  $$ |\n"
+            + "$$ |  $$ |$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |\n"
+            + "$$$$$$$  |$$ |$$ |  $$ |\\$$$$$$$ |\\$$$$$$  |\n"
+            + "\\_______/ \\__|\\__|  \\__| \\____$$ | \\______/\n"
+            + "                        $$\\   $$ |\n"
+            + "                        \\$$$$$$  |\n"
+            + "                         \\______/\n"
+            + "--------------------------------------------";
+    
+    static boolean bdActiva;
+    static BingoMysqlDao dao;
 
     public static void main(String[] args) {
-        
-        System.out.println("$$$$$$$\\  $$\\\n"
-                + "$$  __$$\\ \\__|\n"
-                + "$$ |  $$ |$$\\ $$$$$$$\\   $$$$$$\\   $$$$$$\\\n"
-                + "$$$$$$$\\ |$$ |$$  __$$\\ $$  __$$\\ $$  __$$\\\n"
-                + "$$  __$$\\ $$ |$$ |  $$ |$$ /  $$ |$$ /  $$ |\n"
-                + "$$ |  $$ |$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |\n"
-                + "$$$$$$$  |$$ |$$ |  $$ |\\$$$$$$$ |\\$$$$$$  |\n"
-                + "\\_______/ \\__|\\__|  \\__| \\____$$ | \\______/\n"
-                + "                        $$\\   $$ |\n"
-                + "                        \\$$$$$$  |\n"
-                + "                         \\______/");
-        System.out.println("--------------------------------------------\n\n");
-        
-        
-        String nombre = "";
-        Bingo bingo = null;
-        System.out.println();
-        
-        switch (scannerPartida()) {
-            case 1:
-                bingo = new BingoAmericano(nombre);
-                break;
-            case 2:
-                bingo = new BingoEuropeo(nombre);
-                break;
+        while (true) {            
+            
         }
-        
-        System.out.println(nombre);
-        System.out.println(bingo.getCarton().toPrettyString());
     }
     
-    private static String scannerNombre() {
-        System.out.print("¿Cual es tu nombre?\n"
-                + "> ");
+    public static void bingo() {
+        
+    }
+    
+    private static String scannerString() {
+        System.out.print("> ");
         return sc.nextLine();
     }
     
-    private static int scannerPartida() {
-        int opcion = 0;
-        System.out.println("¿A que bingo quiere jugar?\n"
-                + "  1. Americano\n"
-                + "  2. Europeo");
+    private static int scannerIntPartida(int ini, int fin) {
+        if (fin <= ini) {
+            throw new IllegalArgumentException(
+                    "Fin(" + fin +") mayor o igual que inicio(" + ini + ")");
+        }
+        
+        int opcion;
+        String ok = "> ";
+        String error = "!! > ";
+        String prompt = ok;
         do {
-            System.out.print("> ");
+            opcion = ini - 1;
+            System.out.print(prompt);
+            
             try {
                 opcion = sc.nextInt();
             } catch (InputMismatchException e) {
                 sc.next();
+                prompt = error;
             }
-        } while (opcion != 1 && opcion != 2);
-        System.out.println("\n");
+            
+            if (opcion < ini || opcion > fin) {
+                opcion = ini - 1;
+                prompt = error;
+            } else {
+                prompt = ok;
+            }
+        } while (opcion == ini - 1);
         
         return opcion;
     }

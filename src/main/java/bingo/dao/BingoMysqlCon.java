@@ -35,6 +35,7 @@ public class BingoMysqlCon {
         if (conexion.isValid(3)) {
             return conexion;
         } else {
+            conexion = null;
             throw new SQLException("No hay conexion");
         }
     }

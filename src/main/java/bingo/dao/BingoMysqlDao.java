@@ -14,7 +14,6 @@ import bingo.bombo.BomboEuropeo;
 import bingo.carton.Carton;
 import bingo.carton.CartonAmericano;
 import bingo.carton.CartonEuropeo;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

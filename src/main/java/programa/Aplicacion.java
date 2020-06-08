@@ -182,4 +182,11 @@ public class Aplicacion {
         
         return opcion;
     }
+    
+    private static void enterParaContinuar() {
+        System.out.println("Presione [Enter] para continuar");
+        try {
+            System.in.read();
+        } catch (IOException ex) {}
+    }
 }

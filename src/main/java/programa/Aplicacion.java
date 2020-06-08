@@ -19,8 +19,8 @@ import java.util.Scanner;
  */
 public class Aplicacion {
 
-    static Scanner sc = new Scanner(System.in);
-    static String bienvenida = 
+    private static Scanner sc = new Scanner(System.in);
+    private static String bienvenida = 
             "$$$$$$$\\  $$\\\n"
             + "$$  __$$\\ \\__|\n"
             + "$$ |  $$ |$$\\ $$$$$$$\\   $$$$$$\\   $$$$$$\\\n"
@@ -34,9 +34,9 @@ public class Aplicacion {
             + "                         \\______/\n"
             + "--------------------------------------------";
     
-    static BingoMysqlDao dao;
+    private static BingoMysqlDao dao;
     
-    static boolean comprobarConBd() {
+    private static boolean comprobarConBd() {
         try {
             dao = new BingoMysqlDao();
             return true;
@@ -49,14 +49,15 @@ public class Aplicacion {
     
 
     public static void main(String[] args) {
-        while (true) {            
+        while (true) {
             System.out.println(bienvenida + "\n\n"
                     + "(1) Jugar\n"
                     + "(2) Salir");
             
             switch (scannerInt(1, 2)) {
                 case 1:
-                    bingo();
+                    System.out.println("\n");
+                    menuInicial();
                     break;
                 case 2:
                     System.exit(0);
@@ -65,7 +66,40 @@ public class Aplicacion {
         }
     }
     
-    public static void bingo() {
+    private static void menuInicial() {
+        while (true) {            
+            System.out.println("¿Que quiere hacer?\n\n"
+                    + "(1) Nueva partida\n"
+                    + "(2) Ver partidas guardadas\n"
+                    + "(0) Atras");
+
+            Bingo bingo = null;
+            switch (scannerInt(0, 2)) {
+                case 1:
+                    bingo = crearPartida();
+                    break;
+                case 2:
+                    bingo = partidasGuardadas();
+                    break;
+                case 0:
+                    return;
+            }
+            
+            if (bingo != null) {
+                juego(bingo);
+            }
+        }
+    }
+    
+    private static Bingo crearPartida() {
+        
+    }
+    
+    private static Bingo partidasGuardadas() {
+        
+    }
+    
+    private static void juego(Bingo bingo) {
         
     }
     

@@ -132,8 +132,21 @@ public class Aplicacion {
     private static String scannerString() {
         Scanner sc = new Scanner(System.in);
         
-        System.out.print("> ");
-        return sc.nextLine();
+        String str;
+        String ok = "> ";
+        String error = "!! > ";
+        String prompt = ok;
+        do {
+            System.out.print(prompt);
+            
+            str = sc.nextLine();
+            
+            if (str.length() == 0) {
+                prompt = error;
+            }
+        } while (str.length() == 0);
+        
+        return str;
     }
     
     private static int scannerInt(int ini, int fin) {

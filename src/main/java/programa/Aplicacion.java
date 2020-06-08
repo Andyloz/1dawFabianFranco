@@ -52,14 +52,14 @@ public class Aplicacion {
         while (true) {
             System.out.println(bienvenida + "\n\n"
                     + "(1) Jugar\n"
-                    + "(2) Salir");
+                    + "(0) Salir");
             
-            switch (scannerInt(1, 2)) {
+            switch (scannerInt(0, 1)) {
                 case 1:
                     System.out.println("\n");
                     menuInicial();
                     break;
-                case 2:
+                case 0:
                     System.exit(0);
                     break;
             }
@@ -71,10 +71,12 @@ public class Aplicacion {
             System.out.println("¿Que quiere hacer?\n\n"
                     + "(1) Nueva partida\n"
                     + "(2) Ver partidas guardadas\n"
-                    + "(0) Atras");
+                    + "(0) Volver");
 
             Bingo bingo = null;
             switch (scannerInt(0, 2)) {
+                default:
+                    System.out.println("\n");
                 case 1:
                     bingo = crearPartida();
                     break;

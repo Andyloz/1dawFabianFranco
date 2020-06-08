@@ -179,12 +179,10 @@ public class BingoMysqlDao implements BingoDao {
     public boolean deletePartida() {
         try {
             String sql = "delete from partida";
-            con.createStatement().executeUpdate(sql);
+            return con.createStatement().executeUpdate(sql) > 0;
         } catch (SQLException ex) {
             return false;
         }
-        
-        return true;
     }
 
     @Override

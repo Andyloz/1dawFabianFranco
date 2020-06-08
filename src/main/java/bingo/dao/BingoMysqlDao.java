@@ -54,15 +54,15 @@ public class BingoMysqlDao implements BingoDao {
         return partidas;
     }
     
-    public List<Integer> getAllIds() {
+    public List<String> getAllIds() {
         String sql = "select id from partida";
-        List<Integer> ids = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
         
         try {
             
             ResultSet rset = con.createStatement().executeQuery(sql);
             while (rset.next()) {            
-                ids.add(rset.getInt("id"));
+                ids.add(rset.getString("id"));
             }
             
         } catch (SQLException e) {

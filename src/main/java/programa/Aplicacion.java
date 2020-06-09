@@ -166,6 +166,11 @@ public class Aplicacion {
                     }
                     
                     opcion--;
+                    bingo = gestionarPartida(partidas.get(opcion));
+                    
+                    if (bingo != null) {
+                        return bingo;
+                    }
 
             } else {
                 System.out.println("No hay partidas guardadas");
@@ -197,6 +202,10 @@ public class Aplicacion {
                 enterParaContinuar();
                 System.out.println("\n");
         }
+    }
+    
+    private static Bingo gestionarPartida(Bingo bingo) {
+        
     }
     
     private static void jugar(Bingo bingo) {

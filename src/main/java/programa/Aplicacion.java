@@ -213,6 +213,26 @@ public class Aplicacion {
         
     }
     
+    private static Bingo cambiarIdjugador(Bingo bingo) {
+        System.out.println("Introduzca el id de jugador (o 0 para cancelar):");
+        
+        String nombre = scannerString();
+        
+        System.out.println();
+        switch (nombre) {
+            case "0":
+                System.out.println("No se ha cambiado el id de jugador");
+                break;
+            default:
+                bingo.setIdJugador(nombre);
+                System.out.println("Se ha cambiado el id de jugador a " + nombre);
+                break;
+        }
+        
+        System.out.println("\n");
+        return bingo;
+    }
+    
     private static void jugar(Bingo bingo) {
         Carton carton = bingo.getCarton();
         Bombo bombo = bingo.getBombo();

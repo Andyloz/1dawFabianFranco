@@ -132,13 +132,47 @@ public class Aplicacion {
     }
     
     private static Bingo partidasGuardadas() {
-        if (!comprobarConBd()) {
-            System.out.println("No hay conexion con la base de datos");
-            return null;
+        while (true) {            
+            
+            if (!comprobarConBd()) {
+                System.out.println("No hay conexion con la base de datos");
+                return null;
+            }
+
+            Bingo bingo = null;
+            List<Bingo> partidas = dao.getAllPartidas();
+            
+            if (partidas.size() > 0) {
+
+                    System.out.println("Seleccione una partida:\n");
+
+                    for (int i = 0; i < partidas.size(); i++) {
+                        Bingo p = partidas.get(i);
+                        System.out.println("("+ (i+1) +") " + p.toPrettyString());
+                    }
+                    
+                    System.out.println("\n(-1) Borrar todas las partidas");
+                    System.out.println("(0) Volver");
+                    
+                    int opcion = scannerInt(-1, partidas.size());
+                    
+                    switch (opcion) {
+                        case 0:
+                            return null;
+                        case -1:
+                            System.out.println("\n");
+                            borrarTodo();
+                            continue;
+                    }
+                    
+                    opcion--;
+
+            } else {
+                System.out.println("No hay partidas guardadas");
+                enterParaContinuar();
+                return null;
+            }
         }
-        
-        Bingo bingo = null;
-        return bingo;
     }
     
     private static void borrarTodo() {

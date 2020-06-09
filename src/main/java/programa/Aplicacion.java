@@ -65,9 +65,11 @@ public class Aplicacion {
                     + "(1) Jugar\n"
                     + "(0) Salir");
             
-            switch (scannerInt(0, 1)) {
+            int opcion = scannerInt(0, 1);
+            
+            System.out.println("\n");
+            switch (opcion) {
                 case 1:
-                    System.out.println("\n");
                     menuInicial();
                     break;
                 case 0:
@@ -82,19 +84,18 @@ public class Aplicacion {
             System.out.println("¿Que quiere hacer?\n\n"
                     + "(1) Nueva partida\n"
                     + "(2) Ver partidas guardadas\n"
-                    + "(0) Volver");
-
+                    + "(0) Volver\n");
+            
             Bingo bingo = null;
-            switch (scannerInt(0, 2)) {
+            int opcion = scannerInt(0, 2);
+            
+            System.out.println("\n");
+            switch (opcion) {
                 case 1:
-                    System.out.println("\n");
                     bingo = crearPartida();
-                    System.out.println("\n");
                     break;
                 case 2:
-                    System.out.println("\n");
                     bingo = partidasGuardadas();
-                    System.out.println("\n");
                     break;
                 case 0:
                     return;
@@ -119,7 +120,10 @@ public class Aplicacion {
                 + "(2) Bingo Europeo\n"
                 + "(0) Volver");
         
-        switch (scannerInt(0, 2)) {
+        int opcion = scannerInt(0, 2);
+        
+        System.out.println("\n");
+        switch (opcion) {
             case 1:
                 bingo = new BingoAmericano(nombre);
                 break;
@@ -135,7 +139,7 @@ public class Aplicacion {
         while (true) {            
             
             if (!comprobarConBd()) {
-                System.out.println("No hay conexion con la base de datos");
+                System.out.println("No hay conexion con la base de datos\n");
                 return null;
             }
 
@@ -156,11 +160,11 @@ public class Aplicacion {
                     
                     int opcion = scannerInt(-1, partidas.size());
                     
+                    System.out.println("\n");
                     switch (opcion) {
                         case 0:
                             return null;
                         case -1:
-                            System.out.println("\n");
                             borrarTodo();
                             continue;
                     }
@@ -173,15 +177,16 @@ public class Aplicacion {
                     }
 
             } else {
-                System.out.println("No hay partidas guardadas");
+                System.out.println("No hay partidas guardadas\n");
                 enterParaContinuar();
+                System.out.println("\n");
                 return null;
             }
         }
     }
     
     private static void borrarTodo() {
-        System.out.println("¿Seguro que quiere borrar todas las partidas?\n");
+        System.out.println("¿Seguro que quiere borrar todas las partidas?");
         System.out.print("S/N ");
         
         String opcion = scannerString("S", "N");
@@ -195,13 +200,13 @@ public class Aplicacion {
                     System.out.println("Ha habido un error al borrar las partidas.");
                 }
                 enterParaContinuar();
-                System.out.println("\n");
                 break;
             case "N":
                 System.out.println("No se han borrado las partidas.");
                 enterParaContinuar();
-                System.out.println("\n");
+                break;
         }
+        System.out.println("\n");
     }
     
     private static Bingo gestionarPartida(Bingo bingo) {

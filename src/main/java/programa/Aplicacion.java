@@ -187,6 +187,31 @@ public class Aplicacion {
         return str;
     }
     
+    private static String scannerString(String... opciones) {
+        Scanner sc = new Scanner(System.in);
+        
+        String str;
+        String ok = "> ";
+        String error = "!! > ";
+        String prompt = ok;
+        do {
+            System.out.print(prompt);
+            
+            str = sc.nextLine();
+            
+            if (str.length() == 0) {
+                prompt = error;
+            } else {
+                for (String opcion : opciones) {
+                    if (str.equalsIgnoreCase(opcion)) {
+                        return str.toUpperCase();
+                    }
+                }
+                prompt = error;
+            }
+        } while (true);
+    }
+    
     private static int scannerInt(int ini, int fin) {
         Scanner sc = new Scanner(System.in);
         

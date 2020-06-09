@@ -185,10 +185,11 @@ public class Aplicacion {
         }
     }
     
-    private static void borrarTodo() {
+    private static boolean borrarTodo() {
         System.out.println("¿Seguro que quiere borrar todas las partidas?");
         System.out.print("S/N ");
         
+        boolean estaBorrado = false;
         String opcion = scannerString("S", "N");
         System.out.println();
         
@@ -196,6 +197,7 @@ public class Aplicacion {
             case "S":
                 if (dao.deletePartida()) {
                     System.out.println("Partidas borradas.");
+                    estaBorrado = true;
                 } else {
                     System.out.println("Ha habido un error al borrar las partidas.");
                 }
@@ -207,10 +209,8 @@ public class Aplicacion {
                 break;
         }
         System.out.println("\n");
-    }
-    
-    private static Bingo gestionarPartida(Bingo bingo) {
         
+        return estaBorrado;
     }
     
     private static Bingo cambiarIdjugador(Bingo bingo) {

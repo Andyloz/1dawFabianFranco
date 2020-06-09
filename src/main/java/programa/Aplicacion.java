@@ -204,13 +204,48 @@ public class Aplicacion {
                 case 2:
                     cambiarIdjugador(bingo);
                     break;
+                case 3:
+                    if (borrarPartida(bingo)) {
+                        return null;
+                    }
+                    break;
             }
         }
     }
     
+    private static boolean borrarPartida(Bingo bingo) {
+        System.out.println("¿Seguro que quiere borrar la partida?\n"
+                + bingo.toPrettyString() + "\n\n"
+                
+                + "S/N ");
+        
+        boolean estaBorrado = false;
+        String opcion = scannerString("S", "N");
+        System.out.println();
+        
+        switch (opcion) {
+            case "S":
+                if (dao.deletePartida(bingo)) {
+                    System.out.println("Partida borrada.");
+                    estaBorrado = true;
+                } else {
+                    System.out.println("Ha habido un error al borrar la partida.");
+                }
+                enterParaContinuar();
+                break;
+            case "N":
+                System.out.println("No se ha borrado la partida.");
+                enterParaContinuar();
+                break;
+        }
+        System.out.println("\n");
+        
+        return estaBorrado;
+    }
+    
     private static boolean borrarTodo() {
-        System.out.println("¿Seguro que quiere borrar todas las partidas?");
-        System.out.print("S/N ");
+        System.out.println("¿Seguro que quiere borrar todas las partidas?\n"
+                + "S/N ");
         
         boolean estaBorrado = false;
         String opcion = scannerString("S", "N");

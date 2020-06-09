@@ -84,7 +84,7 @@ public class Aplicacion {
                     + "(0) Volver");
 
             Bingo bingo = null;
-            switch (scannerInt(0, 1)) {
+            switch (scannerInt(0, 2)) {
                 case 1:
                     System.out.println("\n");
                     bingo = crearPartida();
@@ -196,9 +196,8 @@ public class Aplicacion {
         }
         
         int opcion;
-        String ok = "> ";
+        String prompt = "> ";
         String error = "!! > ";
-        String prompt = ok;
         do {
             opcion = ini - 1;
             System.out.print(prompt);
@@ -213,8 +212,6 @@ public class Aplicacion {
             if (opcion < ini || opcion > fin) {
                 opcion = ini - 1;
                 prompt = error;
-            } else {
-                prompt = ok;
             }
         } while (opcion == ini - 1);
         

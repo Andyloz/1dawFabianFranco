@@ -15,6 +15,7 @@ import java.awt.Point;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -138,6 +139,30 @@ public class Aplicacion {
         
         Bingo bingo = null;
         return bingo;
+    }
+    
+    private static void borrarTodo() {
+        System.out.println("¿Seguro que quiere borrar todas las partidas?\n");
+        System.out.print("S/N ");
+        
+        String opcion = scannerString("S", "N");
+        System.out.println();
+        
+        switch (opcion) {
+            case "S":
+                if (dao.deletePartida()) {
+                    System.out.println("Partidas borradas.");
+                } else {
+                    System.out.println("Ha habido un error al borrar las partidas.");
+                }
+                enterParaContinuar();
+                System.out.println("\n");
+                break;
+            case "N":
+                System.out.println("No se han borrado las partidas.");
+                enterParaContinuar();
+                System.out.println("\n");
+        }
     }
     
     private static void jugar(Bingo bingo) {

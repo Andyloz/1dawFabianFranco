@@ -26,7 +26,7 @@ public final class BingoEuropeo extends Bingo {
     
     @Override
     public String toPrettyString() {
-        return "Bingo Europeo -> " + super.toPrettyString();
+        return "Bingo Europeo ->\t" + super.toPrettyString();
     }
 
     @Override

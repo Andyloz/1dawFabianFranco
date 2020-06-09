@@ -185,6 +185,29 @@ public class Aplicacion {
         }
     }
     
+    private static Bingo gestionarPartida(Bingo bingo) {
+        while (true) {            
+            System.out.println("Partida:\n"
+                    + bingo.toPrettyString() + "\n\n"
+                    
+                    + "(1) Jugar esta partida\n"
+                    + "(2) Cambiar ID jugador\n"
+                    + "(3) Eliminar partida\n"
+                    + "(0) Volver\n");
+            
+            int opcion = scannerInt(0, 3);
+            
+            System.out.println("\n");
+            switch (opcion) {
+                case 1:
+                    return bingo;
+                case 2:
+                    cambiarIdjugador(bingo);
+                    break;
+            }
+        }
+    }
+    
     private static boolean borrarTodo() {
         System.out.println("¿Seguro que quiere borrar todas las partidas?");
         System.out.print("S/N ");

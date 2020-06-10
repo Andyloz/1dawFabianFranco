@@ -318,6 +318,19 @@ public class Aplicacion {
         }
     }
     
+    private static boolean esSeguro(String msg) {
+        System.out.println(msg);
+
+        String opcion = scannerSiNo();
+        System.out.println("\n");
+
+        switch (opcion) {
+            case "N":
+                return false;
+        }
+        return true;
+    }
+    
     private static String scannerString() {
         Scanner sc = new Scanner(System.in);
         

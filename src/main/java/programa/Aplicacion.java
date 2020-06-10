@@ -318,6 +318,19 @@ public class Aplicacion {
         }
     }
     
+    private static boolean salirOSeguir() {
+        System.out.println("Siguiente bola [B] - Salir [S]");
+        
+        String opcion = scannerString("B", "S");
+        System.out.println();
+        switch (opcion) {
+            case "S":
+                return true;
+        }
+                
+        return false;
+    }
+    
     private static boolean esSeguro(String msg) {
         System.out.println(msg);
 

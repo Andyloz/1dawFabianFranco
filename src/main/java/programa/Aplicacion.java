@@ -214,58 +214,51 @@ public class Aplicacion {
     }
     
     private static boolean borrarPartida(Bingo bingo) {
-        System.out.println("¿Seguro que quiere borrar la partida?\n"
-                + bingo.toPrettyString());
-        
         boolean estaBorrado = false;
-        String opcion = scannerSiNo();
-        System.out.println();
         
-        switch (opcion) {
-            case "S":
-                if (dao.deletePartida(bingo)) {
-                    System.out.println("Partida borrada.");
-                    estaBorrado = true;
-                } else {
-                    System.out.println("Ha habido un error al borrar la partida.");
-                }
-                enterParaContinuar();
-                break;
-            case "N":
-                System.out.println("No se ha borrado la partida.");
-                enterParaContinuar();
-                break;
+        if (esSeguro("¿Seguro que quiere borrar la partida?\n"
+                + bingo.toPrettyString()))
+        {
+            System.out.println();
+            if (dao.deletePartida(bingo)) {
+                System.out.println("Partida borrada.");
+                estaBorrado = true;
+            } else {
+                System.out.println("Ha habido un error al borrar la partida.");
+            }
+            enterParaContinuar();
+            
+        } else {
+            System.out.println();
+            System.out.println("No se ha podido borrar la partida.");
+            enterParaContinuar();
         }
-        System.out.println("\n");
         
+        System.out.println("\n");
         return estaBorrado;
     }
     
     private static boolean borrarTodo() {
-        System.out.println("¿Seguro que quiere borrar todas las partidas?\n"
-                + "S/N ");
-        
         boolean estaBorrado = false;
-        String opcion = scannerSiNo();
-        System.out.println();
         
-        switch (opcion) {
-            case "S":
-                if (dao.deletePartida()) {
-                    System.out.println("Partidas borradas.");
-                    estaBorrado = true;
-                } else {
-                    System.out.println("Ha habido un error al borrar las partidas.");
-                }
-                enterParaContinuar();
-                break;
-            case "N":
-                System.out.println("No se han borrado las partidas.");
-                enterParaContinuar();
-                break;
+        if (esSeguro("¿Seguro que quiere borrar todas las partidas?")) {
+            
+            if (dao.deletePartida()) {
+                System.out.println("Partidas borradas.");
+                estaBorrado = true;
+            } else {
+                System.out.println("Ha habido un error al borrar las partidas.");
+            }
+            enterParaContinuar();
+            
+        } else {
+            
+            System.out.println("No se han borrado las partidas.");
+            enterParaContinuar();
+            
         }
-        System.out.println("\n");
         
+        System.out.println("\n");
         return estaBorrado;
     }
     

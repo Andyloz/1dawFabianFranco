@@ -215,12 +215,10 @@ public class Aplicacion {
     
     private static boolean borrarPartida(Bingo bingo) {
         System.out.println("¿Seguro que quiere borrar la partida?\n"
-                + bingo.toPrettyString() + "\n\n"
-                
-                + "S/N ");
+                + bingo.toPrettyString());
         
         boolean estaBorrado = false;
-        String opcion = scannerString("S", "N");
+        String opcion = scannerSiNo();
         System.out.println();
         
         switch (opcion) {
@@ -248,7 +246,7 @@ public class Aplicacion {
                 + "S/N ");
         
         boolean estaBorrado = false;
-        String opcion = scannerString("S", "N");
+        String opcion = scannerSiNo();
         System.out.println();
         
         switch (opcion) {

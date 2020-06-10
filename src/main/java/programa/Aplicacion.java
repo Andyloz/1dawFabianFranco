@@ -331,6 +331,38 @@ public class Aplicacion {
         return false;
     }
     
+    private static boolean terminarPartida(Bingo bingo) {
+        while (true) {
+            
+            if (!esSeguro("¿Seguro que quieres terminar la partida?")) {
+                return false;
+            }
+            System.out.println("\n");
+            
+            if (comprobarConBd()) {
+                
+                if (esSeguro("¿Quiere guardar la partida?")) {
+                    dao.savePartida(bingo);
+                    return true;
+                } else {
+                    
+                    if (esSeguro("¿Seguro que quiere salir sin guardar?\n"
+                            + "(Cualquier progreso se perdera para siempre)")) {
+                        return true;
+                    } else {
+                        continue;
+                    }
+                    
+                }
+                
+                
+            } else {
+                System.out.println("No se puede guardar la partida (no hay conexion con la base de datos).");
+                return esSeguro("¿Seguro que quiere salir?");
+            }
+        }
+    }
+    
     private static boolean esSeguro(String msg) {
         System.out.println(msg);
 

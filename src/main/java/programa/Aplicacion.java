@@ -24,7 +24,7 @@ import java.util.Scanner;
  */
 public class Aplicacion {
 
-    private static String bienvenida = 
+    private static String bingo = 
               "$$$$$$$\\  $$\\\n"
             + "$$  __$$\\ \\__|\n"
             + "$$ |  $$ |$$\\ $$$$$$$\\   $$$$$$\\   $$$$$$\\\n"
@@ -61,7 +61,7 @@ public class Aplicacion {
     public static void main(String[] args) {
         while (true) {
             System.out.println("\n\n"
-                    + bienvenida + "\n\n"
+                    + bingo + "\n\n"
                     + "(1) Jugar\n"
                     + "(0) Salir");
             
@@ -303,9 +303,17 @@ public class Aplicacion {
                 System.out.println("No se ha tachado ninguna casilla");
             }
             
-            System.out.println("\nUltimas bolas sacadas: " + bombo.getUltBolasSacadas(5));
-            enterParaContinuar();
-            System.out.println("\n");
+            System.out.println("\nUltimas bolas sacadas: " + bombo.getUltBolasSacadas(5) + "\n");
+            
+            if (salirOSeguir() && terminarPartida(bingo)) {
+                return;
+            }
+        }
+        
+        System.out.println(bingo + "\n\n\n");
+        
+        if (comprobarConBd()) {
+            dao.deletePartida(bingo);
         }
     }
     

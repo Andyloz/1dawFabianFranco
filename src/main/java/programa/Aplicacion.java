@@ -317,6 +317,7 @@ public class Aplicacion {
         }
         
         System.out.println(hasGanado + "\n\n\n");
+        enterParaContinuar();
         
         if (bingo.getId() != null && comprobarConBd()) {
             dao.deletePartida(bingo);

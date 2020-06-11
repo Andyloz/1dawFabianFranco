@@ -39,10 +39,14 @@ public class Aplicacion {
             + "--------------------------------------------";
     
     private static String empecemos =
-              " ___        __   ___  __   ___        __   __       /  /  /\n"
-            + "|__   |\\/| |__) |__  /  ` |__   |\\/| /  \\ /__`     /  /  / \n"
-            + "|___  |  | |    |___ \\__, |___  |  | \\__/ .__/    .  .  .  \n"
-            + "                                                           ";
+            "░█▀▀▀ █▀▄▀█ █▀▀█ █▀▀ █▀▀ █▀▀ █▀▄▀█ █▀▀█ █▀▀ 　 █ █ \n" +
+            "░█▀▀▀ █─▀─█ █──█ █▀▀ █── █▀▀ █─▀─█ █──█ ▀▀█ 　 ▀ ▀ \n" +
+            "░█▄▄▄ ▀───▀ █▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀ ▀───▀ ▀▀▀▀ ▀▀▀ 　 ▄ ▄";
+    
+    private static String hasGanado =
+            "█░░█ █▀▀█ █▀▀ 　 █▀▀▀ █▀▀█ █▀▀▄ █▀▀█ █▀▀▄ █▀▀█ \n" +
+            "█▀▀█ █▄▄█ ▀▀█ 　 █░▀█ █▄▄█ █░░█ █▄▄█ █░░█ █░░█ \n" +
+            "▀░░▀ ▀░░▀ ▀▀▀ 　 ▀▀▀▀ ▀░░▀ ▀░░▀ ▀░░▀ ▀▀▀░ ▀▀▀▀";
     
     private static BingoMysqlDao dao;
     
@@ -312,9 +316,9 @@ public class Aplicacion {
             }
         }
         
-        System.out.println(bingo + "\n\n\n");
+        System.out.println(hasGanado + "\n\n\n");
         
-        if (comprobarConBd()) {
+        if (bingo.getId() != null && comprobarConBd()) {
             dao.deletePartida(bingo);
         }
     }

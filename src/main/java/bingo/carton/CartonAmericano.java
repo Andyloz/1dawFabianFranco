@@ -29,7 +29,7 @@ public final class CartonAmericano extends Carton {
 
     public CartonAmericano(int[][] matriz) {
         super(matriz);
-        this.premio = generarPremio();
+        this.premio = null;
     }
 
     @Override
@@ -101,6 +101,14 @@ public final class CartonAmericano extends Carton {
         Random random = new Random();
         Patron[] patrones = Patron.values();
         
+        for (Patron patron : patrones) {
+            System.out.println(patron.toString());
+        }
+        
         return patrones[random.nextInt(patrones.length)];
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(new CartonAmericano().toPrettyString());
     }
 }

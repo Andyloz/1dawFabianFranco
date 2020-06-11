@@ -128,7 +128,7 @@ public abstract class Carton {
         mid +=  "╣";
         tail += "╝";
         
-        String vacio =   "║    ";
+        String vacio =   "║▒▒▒▒";
         String tachado = "║====";
         String relleno = "║ %02d ";
         

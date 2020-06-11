@@ -320,9 +320,9 @@ public class Aplicacion {
     }
     
     private static boolean salirOSeguir() {
-        System.out.println("Siguiente bola [B] - Salir [S]");
+        System.out.println("Siguiente bola [Enter] - Salir [S]");
         
-        String opcion = scannerString("B", "S");
+        String opcion = scannerString("", "S");
         System.out.println();
         switch (opcion) {
             case "S":

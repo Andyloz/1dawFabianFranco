@@ -409,16 +409,12 @@ public class Aplicacion {
             
             str = sc.nextLine();
             
-            if (str.length() == 0) {
-                prompt = error;
-            } else {
-                for (String opcion : opciones) {
-                    if (str.equalsIgnoreCase(opcion)) {
-                        return str.toUpperCase();
-                    }
+            for (String opcion : opciones) {
+                if (str.equalsIgnoreCase(opcion)) {
+                    return str.toUpperCase();
                 }
-                prompt = error;
             }
+            prompt = error;
         } while (true);
     }
     

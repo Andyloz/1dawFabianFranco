@@ -263,7 +263,7 @@ public class Aplicacion {
     }
     
     private static Bingo cambiarIdjugador(Bingo bingo) {
-        System.out.println("Introduzca el id de jugador (o 0 para cancelar):");
+        System.out.println("Introduzca el id de jugador (o \"0\" para cancelar):");
         
         String nombre = scannerString();
         
@@ -274,6 +274,7 @@ public class Aplicacion {
                 break;
             default:
                 bingo.setIdJugador(nombre);
+                dao.updatePartida(bingo);
                 System.out.println("Se ha cambiado el id de jugador a " + nombre);
                 break;
         }

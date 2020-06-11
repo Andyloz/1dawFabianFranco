@@ -146,14 +146,15 @@ public class BingoMysqlDao implements BingoDao {
 
     @Override
     public boolean updatePartida(Bingo bingo) {
-        String sql = "update partida set bombo = ?, carton = ? where id = ?";
+        String sql = "update partida set idJugador = ?, bombo = ?, carton = ? where id = ?";
         
         try {
             PreparedStatement st = con.prepareStatement(sql);
             
-            st.setString(1, bingo.getBombo().toString());
-            st.setString(2, bingo.getCarton().toString());
-            st.setString(3, bingo.getId());
+            st.setString(1, bingo.getIdJugador());
+            st.setString(2, bingo.getBombo().toString());
+            st.setString(3, bingo.getCarton().toString());
+            st.setString(4, bingo.getId());
             
             return st.executeUpdate() == 1;
             
@@ -271,5 +272,21 @@ public class BingoMysqlDao implements BingoDao {
             default:
                 return null;
         }
+    }
+    
+    public static void main(String[] args) throws SQLException {
+        BingoMysqlDao dao = new BingoMysqlDao();
+//        for (int i = 0; i < 6; i++) {
+//            if (i%2 == 0) {
+//                dao.savePartida(new BingoAmericano("a"));
+//            } else {
+//                dao.savePartida(new BingoEuropeo("a"));
+//            }
+//        }
+        Bingo b = dao.getById("2020-06-09T17:50:11.719052");
+        System.out.println(b.toPrettyString());
+        b.setIdJugador("holi");
+        System.out.println(dao.updatePartida(b));
+        
     }
 }

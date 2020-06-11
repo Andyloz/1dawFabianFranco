@@ -273,20 +273,4 @@ public class BingoMysqlDao implements BingoDao {
                 return null;
         }
     }
-    
-    public static void main(String[] args) throws SQLException {
-        BingoMysqlDao dao = new BingoMysqlDao();
-//        for (int i = 0; i < 6; i++) {
-//            if (i%2 == 0) {
-//                dao.savePartida(new BingoAmericano("a"));
-//            } else {
-//                dao.savePartida(new BingoEuropeo("a"));
-//            }
-//        }
-        Bingo b = dao.getById("2020-06-09T17:50:11.719052");
-        System.out.println(b.toPrettyString());
-        b.setIdJugador("holi");
-        System.out.println(dao.updatePartida(b));
-        
-    }
 }

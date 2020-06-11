@@ -107,8 +107,4 @@ public final class CartonAmericano extends Carton {
         
         return patrones[random.nextInt(patrones.length)];
     }
-    
-    public static void main(String[] args) {
-        System.out.println(new CartonAmericano().toPrettyString());
-    }
 }

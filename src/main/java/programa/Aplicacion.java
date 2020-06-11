@@ -288,6 +288,7 @@ public class Aplicacion {
         Bombo bombo = bingo.getBombo();
         
         System.out.println(empecemos + "\n");
+        enterParaContinuar();
         
         while (!carton.esBingo()) {
             Point p = carton.tacharNumero(bombo.sacarBola());
@@ -298,7 +299,7 @@ public class Aplicacion {
                 int casilla = bombo.getUltBolasSacadas(1).get(0);
                 String coordenada = "[Fil "+ (p.x + 1) +", Col "+ (p.y + 1) +"]";
                 
-                System.out.println("Casilla "+ casilla +" tachada !!!" + coordenada);
+                System.out.println("Casilla "+ casilla +" tachada !!! " + coordenada);
                 
             } else {
                 System.out.println("No se ha tachado ninguna casilla");

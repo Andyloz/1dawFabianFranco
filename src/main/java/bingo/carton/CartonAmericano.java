@@ -101,10 +101,6 @@ public final class CartonAmericano extends Carton {
         Random random = new Random();
         Patron[] patrones = Patron.values();
         
-        for (Patron patron : patrones) {
-            System.out.println(patron.toString());
-        }
-        
         return patrones[random.nextInt(patrones.length)];
     }
 }

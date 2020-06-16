@@ -213,6 +213,8 @@ public class Aplicacion {
                         return null;
                     }
                     break;
+                case 0:
+                    return null;
             }
         }
     }
